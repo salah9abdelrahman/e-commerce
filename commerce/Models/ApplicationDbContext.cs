@@ -16,9 +16,9 @@ namespace commerce.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductStatus> ProductStatuses { get; set; }
-        public new DbSet<Role> Roles { get; set; }
+        public DbSet<Role> Role { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-        public new DbSet<User> Users { get; set; }
+        public DbSet<User> User { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
 
         public ApplicationDbContext() : base("Entites", throwIfV1Schema: false)

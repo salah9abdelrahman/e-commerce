@@ -8,6 +8,10 @@ namespace commerce.Models
 {
     public class Coupon : RowInformation
     {
+        public Coupon()
+        {
+            Orders = new HashSet<Order>();
+        }
         public int CouponId { get; set; }
         [Required]
         public string Code { get; set; }
@@ -16,6 +20,8 @@ namespace commerce.Models
         public int Value { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+
+        public ICollection<Order> Orders { get; set; }
 
         //public bool Multiple { get; set; }
     }

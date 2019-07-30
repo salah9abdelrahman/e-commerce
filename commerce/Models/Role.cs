@@ -8,9 +8,14 @@ namespace commerce.Models
 {
     public class Role : RowInformation
     {
+        public Role()
+        {
+            UserRoles = new HashSet<UserRole>();
+        }
         public int RoleId { get; set; }
         [Required]
         public string Name { get; set; }
-
+        public int UserRoleId { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

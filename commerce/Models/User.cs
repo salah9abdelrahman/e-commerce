@@ -8,6 +8,11 @@ namespace commerce.Models
 {
     public class User : RowInformation
     {
+        public User()
+        {
+            UserRoles = new HashSet<UserRole>();
+            Orders = new HashSet<Order>();
+        }
         public int UserId { get; set; }
         [Required]
         public string Email { get; set; }
@@ -17,5 +22,8 @@ namespace commerce.Models
         public string LastName { get; set; }
         [Required]
         public string PhoneNumber { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+
     }
 }

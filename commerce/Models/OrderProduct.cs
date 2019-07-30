@@ -7,6 +7,7 @@ namespace commerce.Models
 {
     public class OrderProduct : RowInformation
     {
+        public int OrderProductId { get; set; }
         public int ProductId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -14,6 +15,7 @@ namespace commerce.Models
         public int Quantity { get; set; }
 
         public int OrderId { get; set; }
+        public virtual Order Order { get; set; }
 
 
         //public demical SubTotal { get; set; }
