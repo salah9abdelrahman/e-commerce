@@ -31,7 +31,7 @@ namespace commerce.Repositories
             return dbContext.Set<TEntity>().Where(predicate);
         }
 
-        public TEntity Get(int id)
+        public TEntity Get(int? id)
         {
             return dbContext.Set<TEntity>().Find(id);
         }

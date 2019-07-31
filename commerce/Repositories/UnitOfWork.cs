@@ -1,4 +1,5 @@
-﻿using commerce.Models;
+﻿using commerce.Core.IRepositories;
+using commerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,14 @@ namespace commerce.Repositories
         public UnitOfWork(ApplicationDbContext context)
         {
             _dbContext = context;
+            Products = new ProductRepository(context);
             //use dbsets to initialize repositories
         }
 
-        public int Complete()
+        public IProductRepository Products { get; private set; }
+        public IProductStatusesRepository ProductStatuses { get; private set; }
+
+        public int Save()
         {
             return _dbContext.SaveChanges();
         }

@@ -9,7 +9,7 @@ namespace commerce.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        TEntity Get(int id);
+        TEntity Get(int? id);
         IEnumerable<TEntity> GetAll();
         //to use lamda expression to filter objects exactly like where method
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
