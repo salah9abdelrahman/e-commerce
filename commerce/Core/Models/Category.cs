@@ -15,6 +15,8 @@ namespace commerce.Models
         public int CategoryId { get; set; }
         public int ParentCatId { get; set; }
         [Required]
+        [Display(Name = "Category")]
+        [StringLength(maximumLength: 200)]
         public string Name { get; set; }
         public virtual ICollection<ProductCategory> ProductCategories { get; set; }
 

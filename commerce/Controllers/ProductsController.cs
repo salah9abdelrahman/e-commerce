@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using commerce.Models;
 using commerce.Repositories;
+using commerce.ViewModels;
 
 namespace commerce.Controllers
 {
@@ -46,8 +47,8 @@ namespace commerce.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            // ViewBag.ProductStatusId = new SelectList(db.ProductStatuses, "ProductStatusId", "Name");
-            //return View(new );
+            ViewBag.ProductStatusId = new SelectList(db.ProductStatuses.GetAll(), "ProductStatusId", "Name");
+            return View();
         }
 
         // POST: Products/Create
@@ -59,12 +60,15 @@ namespace commerce.Controllers
         {
             if (ModelState.IsValid)
             {
+                product.IsDeleted = false;
+                product.CreationTime = DateTime.Now;
+
                 db.Products.Add(product);
-                db.SaveChanges();
+                db.Save();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProductStatusId = new SelectList(db.ProductStatuses, "ProductStatusId", "Name", product.ProductStatusId);
+            ViewBag.ProductStatusId = new SelectList(db.ProductStatuses.GetAll(), "ProductStatusId", "Name", product.ProductStatusId);
             return View(product);
         }
 
@@ -75,12 +79,12 @@ namespace commerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.Products.Get(id);
             if (product == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ProductStatusId = new SelectList(db.ProductStatuses, "ProductStatusId", "Name", product.ProductStatusId);
+            //  ViewBag.ProductStatusId = new SelectList(db.ProductStatuses, "ProductStatusId", "Name", product.ProductStatusId);
             return View(product);
         }
 
@@ -99,7 +103,7 @@ namespace commerce.Controllers
                 db.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.ProductStatusId = new SelectList(db.ProductStatuses, "ProductStatusId", "Name", product.ProductStatusId);
+            //   ViewBag.ProductStatusId = new SelectList(db.ProductStatuses, "ProductStatusId", "Name", product.ProductStatusId);
             return View(product);
         }
 
