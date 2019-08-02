@@ -11,20 +11,21 @@ using commerce.Repositories;
 
 namespace commerce.Controllers
 {
-    [AllowAnonymous]
     public class ProductsController : Controller
     {
-        private UnitOfWork db;
+        private readonly UnitOfWork _db;
 
         public ProductsController()
         {
-            db = new UnitOfWork(new ApplicationDbContext());
+            _db = new UnitOfWork(new ApplicationDbContext());
         }
 
         // GET: Products
         public ActionResult Index()
         {
-            return View(db.Products.GetProductsWithStatus());
+            var products = _db.Products.GetProductsWithStatus();
+            return User.IsInRole(Roles.CanMangeProducts) ? View(_db.Products.GetProductsWithStatus())
+                : View("ReadOnly", _db.Products.GetProductsWithStatus());
         }
 
         // GET: Products/Details/5
@@ -34,7 +35,7 @@ namespace commerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Get(id);
+            Product product = _db.Products.Get(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -43,9 +44,10 @@ namespace commerce.Controllers
         }
 
         // GET: Products/Create
+        [Authorize(Roles = Roles.CanMangeProducts)]
         public ActionResult Create()
         {
-            var status = db.ProductStatuses.GetAll();
+            var status = _db.ProductStatuses.GetAll();
             ViewBag.ProductStatusId = new SelectList(status, "ProductStatusId", "Name");
             return View();
         }
@@ -53,16 +55,20 @@ namespace commerce.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,Name,Description,RegularPrice,DiscountPrice,Quantity,ProductStatusId,IsDeleted,CreatedBy,UpdatedBy,CreationTime,UpdatedTime")] Product product)
+        public ActionResult Create([Bind(Include = @"ProductId,Name,Description,RegularPrice,DiscountPrice,Quantity,
+                        ProductStatusId,CreatedBy")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
-                db.Save();
+                product.IsDeleted = false;
+                product.CreationTime = DateTime.Now;
+                product.CreatedBy = User.Identity.Name;
+                _db.Products.Add(product);
+                _db.Save();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProductStatusId = new SelectList(db.ProductStatuses.GetAll(), "ProductStatusId", "Name", product.ProductStatusId);
+            ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(), "ProductStatusId", "Name", product.ProductStatusId);
             return View(product);
         }
 
@@ -73,12 +79,13 @@ namespace commerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Get(id);
+            Product product = _db.Products.Get(id);
             if (product == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ProductStatusId = new SelectList(db.ProductStatuses.GetAll(), "ProductStatusId", "Name", product.ProductStatusId);
+            ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(),
+                "ProductStatusId", "Name", product.ProductStatusId);
             return View(product);
         }
 
@@ -87,16 +94,17 @@ namespace commerce.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,Name,Description,RegularPrice,DiscountPrice,Quantity,ProductStatusId,IsDeleted,CreatedBy,UpdatedBy,CreationTime,UpdatedTime")] Product product)
+        public ActionResult Edit([Bind(Include = @"ProductId,Name,Description,RegularPrice,DiscountPrice,Quantity,
+                            ProductStatusId,IsDeleted,CreatedBy,UpdatedBy,CreationTime,UpdatedTime")] Product product)
         {
             if (ModelState.IsValid)
             {
                 // db.Entry(product).State = EntityState.Modified;
 
-                db.Save();
+                _db.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.ProductStatusId = new SelectList(db.ProductStatuses.GetAll(), "ProductStatusId", "Name", product.ProductStatusId);
+            ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(), "ProductStatusId", "Name", product.ProductStatusId);
             return View(product);
         }
 
@@ -107,7 +115,7 @@ namespace commerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Get(id);
+            Product product = _db.Products.Get(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -120,9 +128,9 @@ namespace commerce.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Get(id);
-            db.Products.Remove(product);
-            db.Save();
+            Product product = _db.Products.Get(id);
+            _db.Products.Remove(product);
+            _db.Save();
             return RedirectToAction("Index");
         }
 
@@ -130,7 +138,7 @@ namespace commerce.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

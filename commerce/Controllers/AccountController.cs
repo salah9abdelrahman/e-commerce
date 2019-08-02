@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using commerce.Models;
 using commerce.ViewModels;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace commerce.Controllers
 {
@@ -163,6 +164,14 @@ namespace commerce.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    ////register store manger
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManger = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManger.CreateAsync(new IdentityRole(Roles.CanMangeProducts));
+                    //await UserManager.AddToRoleAsync(user.Id, Roles.CanMangeProducts);
+
+
 
                     return RedirectToAction("Index", "Home");
                 }
