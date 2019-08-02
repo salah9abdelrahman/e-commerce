@@ -23,7 +23,9 @@ namespace commerce
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/third").Include(
-                            "~/Scripts/DataTables/jquery.dataTables.min.js"
+                    "~/Scripts/respond.js",
+                    "~/Scripts/DataTables/jquery.dataTables.js",
+                    "~//Scripts/DataTables/datatables.bootstrap.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/third").Include(

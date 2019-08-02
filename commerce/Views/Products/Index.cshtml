@@ -3,12 +3,16 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="col-lg-12 text-center">
+    <h2>Products</h2>
 
-<h2>Index</h2>
+</div>
+<div class="col-lg-12">
+    <p>
+        @Html.ActionLink("Create New", "Create", null, htmlAttributes: new { @class = "btn btn-outline-primary" })
+    </p>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table " id="table_id">
     <thead>
         <tr>
@@ -69,7 +73,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Quantity)
                 </td>
-                <td class="text-break">
+                <td class="text-break ">
                     @Html.DisplayFor(modelItem => item.CreatedBy)
                 </td>
                 <td>
@@ -83,11 +87,11 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.ProductId },
-                        htmlAttributes: new { @class = "btn btn-primary" })
+                        htmlAttributes: new { @class = "btn btn-primary btn-sm" }) <br />
                     @Html.ActionLink("Details", "Details", new { id = item.ProductId },
-                        htmlAttributes: new { @class = "btn btn-primary" })
+                        htmlAttributes: new { @class = "btn btn-primary btn-sm" }) <br />
                     @Html.ActionLink("Delete", "Delete", new { id = item.ProductId },
-                        htmlAttributes: new { @class = "btn btn-danger" })
+                        htmlAttributes: new { @class = "btn btn-danger btn-sm" })
                 </td>
             </tr>
         }
