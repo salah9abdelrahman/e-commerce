@@ -198,6 +198,10 @@
     <Compile Include="Migrations\201907301438052_initialDb.Designer.cs">
       <DependentUpon>201907301438052_initialDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908011051161_annotations.cs" />
+    <Compile Include="Migrations\201908011051161_annotations.Designer.cs">
+      <DependentUpon>201908011051161_annotations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Models\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUser.cs" />
@@ -353,6 +357,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201907301438052_initialDb.resx">
       <DependentUpon>201907301438052_initialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908011051161_annotations.resx">
+      <DependentUpon>201908011051161_annotations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

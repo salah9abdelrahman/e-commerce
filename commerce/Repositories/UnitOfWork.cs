@@ -2,6 +2,7 @@
 using commerce.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
@@ -14,6 +15,7 @@ namespace commerce.Repositories
         {
             _dbContext = context;
             Products = new ProductRepository(context);
+            ProductStatuses = new ProductStatusesRepository(context);
             //use dbsets to initialize repositories
         }
 
@@ -24,6 +26,7 @@ namespace commerce.Repositories
         {
             return _dbContext.SaveChanges();
         }
+
 
         public void Dispose()
         {

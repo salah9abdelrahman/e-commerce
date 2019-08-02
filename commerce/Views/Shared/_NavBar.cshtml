@@ -9,14 +9,17 @@
     <div class=" navbar-collapse collapse" id="navbarHome">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active text-white">
-                @Html.ActionLink("Home", "Index", new { controller = "Home" }, htmlAttributes: new { @class = "text-white nav-link " })<span class="sr-only">(current)</span>
+                @Html.ActionLink("Products", "Index", new { controller = "Products" },
+                    htmlAttributes: new { @class = "text-white nav-link " })<span class="sr-only">(current)</span>
             </li>
             <li class="nav-item text-white">
-                @Html.ActionLink("About", "About", new { controller = "Home" }, htmlAttributes: new { @class = "text-white nav-link " })
+                @Html.ActionLink("About", "About", new { controller = "Home" },
+                    htmlAttributes: new { @class = "text-white nav-link " })
             </li>
 
             <li class="nav-item text-white">
-                @Html.ActionLink("Contact", "Contact", new { controller = "Home" }, htmlAttributes: new { @class = "text-white nav-link " })
+                @Html.ActionLink("Contact", "Contact", new { controller = "Home" },
+                    htmlAttributes: new { @class = "text-white nav-link " })
             </li>
         </ul>
         @Html.Partial("_LoginPartial")

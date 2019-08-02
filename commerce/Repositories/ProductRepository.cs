@@ -2,6 +2,7 @@
 using commerce.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -18,12 +19,10 @@ namespace commerce.Repositories
         {
             get => dbContext as ApplicationDbContext;
         }
-        public IEnumerable<Product> GetTopSalesProducts(int count)
-        {
-            // throw new NotImplementedException();
 
-            // not real implenenytation
-            return ApplicationDbContext.Products.OrderBy(x => x.RegularPrice).Take(10);
+        public IEnumerable<Product> GetProductsWithStatus()
+        {
+            return ApplicationDbContext.Products.Include(x => x.ProductStatus).ToList();
         }
     }
 }

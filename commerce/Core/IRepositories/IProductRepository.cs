@@ -9,6 +9,7 @@ namespace commerce.Core.IRepositories
 {
     public interface IProductRepository : IRepository<Product>
     {
-        IEnumerable<Product> GetTopSalesProducts(int count);
+        IEnumerable<Product> GetProductsWithStatus();
+
     }
 }

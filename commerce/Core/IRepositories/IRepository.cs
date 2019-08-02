@@ -11,7 +11,6 @@ namespace commerce.Repositories
     {
         TEntity Get(int? id);
         IEnumerable<TEntity> GetAll();
-        //to use lamda expression to filter objects exactly like where method
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 
         void Add(TEntity entity);
@@ -19,5 +18,6 @@ namespace commerce.Repositories
 
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);
+
     }
 }

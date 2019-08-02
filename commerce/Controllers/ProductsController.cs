@@ -8,25 +8,23 @@ using System.Web;
 using System.Web.Mvc;
 using commerce.Models;
 using commerce.Repositories;
-using commerce.ViewModels;
 
 namespace commerce.Controllers
 {
+    [AllowAnonymous]
     public class ProductsController : Controller
     {
-        private readonly IUnitOfWork db;
+        private UnitOfWork db;
 
-        public ProductsController(IUnitOfWork unitOfWork)
+        public ProductsController()
         {
-            db = unitOfWork;
-
+            db = new UnitOfWork(new ApplicationDbContext());
         }
 
         // GET: Products
         public ActionResult Index()
         {
-            var products = db.Products.GetAll();
-            return View(products.ToList());
+            return View(db.Products.GetProductsWithStatus());
         }
 
         // GET: Products/Details/5
@@ -47,22 +45,18 @@ namespace commerce.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            ViewBag.ProductStatusId = new SelectList(db.ProductStatuses.GetAll(), "ProductStatusId", "Name");
+            var status = db.ProductStatuses.GetAll();
+            ViewBag.ProductStatusId = new SelectList(status, "ProductStatusId", "Name");
             return View();
         }
 
-        // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductId,Name,Description,RegularPrice,DiscountPrice,Quantity,ProductStatusId,IsDeleted,CreatedBy,UpdatedBy,CreationTime,UpdatedTime")] Product product)
         {
             if (ModelState.IsValid)
             {
-                product.IsDeleted = false;
-                product.CreationTime = DateTime.Now;
-
                 db.Products.Add(product);
                 db.Save();
                 return RedirectToAction("Index");
@@ -84,7 +78,7 @@ namespace commerce.Controllers
             {
                 return HttpNotFound();
             }
-            //  ViewBag.ProductStatusId = new SelectList(db.ProductStatuses, "ProductStatusId", "Name", product.ProductStatusId);
+            ViewBag.ProductStatusId = new SelectList(db.ProductStatuses.GetAll(), "ProductStatusId", "Name", product.ProductStatusId);
             return View(product);
         }
 
@@ -93,17 +87,16 @@ namespace commerce.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,Name,Description,RegularPrice," +
-            "DiscountPrice,Quantity,ProductStatusId,IsDeleted,CreatedBy,UpdatedBy,CreationTime,UpdatedTime")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,Name,Description,RegularPrice,DiscountPrice,Quantity,ProductStatusId,IsDeleted,CreatedBy,UpdatedBy,CreationTime,UpdatedTime")] Product product)
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(product).State = EntityState.Modified;
-                var _product = db.Products.Get(product.ProductId);
+                // db.Entry(product).State = EntityState.Modified;
+
                 db.Save();
                 return RedirectToAction("Index");
             }
-            //   ViewBag.ProductStatusId = new SelectList(db.ProductStatuses, "ProductStatusId", "Name", product.ProductStatusId);
+            ViewBag.ProductStatusId = new SelectList(db.ProductStatuses.GetAll(), "ProductStatusId", "Name", product.ProductStatusId);
             return View(product);
         }
 
