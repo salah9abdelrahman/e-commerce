@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using commerce.Models;
 using commerce.Repositories;
@@ -24,7 +19,7 @@ namespace commerce.Controllers
         public ActionResult Index()
         {
             var products = _db.Products.GetProductsWithStatus();
-            return User.IsInRole(Roles.CanMangeProducts) ? View(_db.Products.GetProductsWithStatus())
+            return User.IsInRole(UserRoles.CanMangeProducts) ? View(_db.Products.GetProductsWithStatus())
                 : View("ReadOnly", _db.Products.GetProductsWithStatus());
         }
 
@@ -44,10 +39,10 @@ namespace commerce.Controllers
         }
 
         // GET: Products/Create
-        [Authorize(Roles = Roles.CanMangeProducts)]
+        [Authorize(Roles = UserRoles.CanMangeProducts)]
         public ActionResult Create()
         {
-            var status = _db.ProductStatuses.GetAll();
+            var status = _db.ProductStatuses.GetAll(x => x.IsDeleted == false);
             ViewBag.ProductStatusId = new SelectList(status, "ProductStatusId", "Name");
             return View();
         }
@@ -68,7 +63,7 @@ namespace commerce.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(), "ProductStatusId", "Name", product.ProductStatusId);
+            ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(x => x.IsDeleted == false), "ProductStatusId", "Name", product.ProductStatusId);
             return View(product);
         }
 
@@ -84,7 +79,7 @@ namespace commerce.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(),
+            ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(x => x.IsDeleted == false),
                 "ProductStatusId", "Name", product.ProductStatusId);
             return View(product);
         }
@@ -100,11 +95,21 @@ namespace commerce.Controllers
             if (ModelState.IsValid)
             {
                 // db.Entry(product).State = EntityState.Modified;
-
+                var _product = _db.Products.Get(product.ProductId);
+                _product.Name = product.Name;
+                _product.Description = product.Description;
+                _product.ProductStatus = product.ProductStatus;
+                _product.Quantity = product.Quantity;
+                _product.DiscountPrice = product.DiscountPrice;
+                _product.RegularPrice = product.RegularPrice;
+                _product.IsDeleted = false;
+                _product.UpdatedTime = DateTime.Now;
+                _product.UpdatedBy = User.Identity.Name;
+                //categories
                 _db.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(), "ProductStatusId", "Name", product.ProductStatusId);
+            ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(x => x.IsDeleted == false), "ProductStatusId", "Name", product.ProductStatusId);
             return View(product);
         }
 

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace commerce.Controllers
 {
-    public static class Roles
+    public static class UserRoles
     {
         public const string CanMangeProducts = "CanMangeProducts";
     }

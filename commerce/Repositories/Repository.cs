@@ -36,9 +36,9 @@ namespace commerce.Repositories
             return dbContext.Set<TEntity>().Find(id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate)
         {
-            return dbContext.Set<TEntity>().ToList();
+            return dbContext.Set<TEntity>().Where(predicate).ToList();
         }
 
         public void Remove(TEntity entity)

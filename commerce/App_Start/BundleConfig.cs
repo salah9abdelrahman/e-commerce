@@ -29,7 +29,7 @@ namespace commerce
                 ));
 
             bundles.Add(new StyleBundle("~/Content/third").Include(
-                "~/Content/DataTables/css/jquery.dataTables.min.css"
+                "~/Content/DataTables/css/jquery.dataTables.css"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

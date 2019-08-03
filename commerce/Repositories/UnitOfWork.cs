@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using commerce.Core;
 
 namespace commerce.Repositories
 {
@@ -16,11 +17,25 @@ namespace commerce.Repositories
             _dbContext = context;
             Products = new ProductRepository(context);
             ProductStatuses = new ProductStatusesRepository(context);
-            //use dbsets to initialize repositories
+            Roles = new RoleRepository(context);
+            Categories = new CategoriesRepository(context);
+            Users = new UserRepository(context);
+            Coupons = new CouponRepository(context);
+            Transactions = new TransactionRepository(context);
+            Orders = new OrderRepository(context);
+            OrderProducts = new OrderProductRepository(context);
         }
 
         public IProductRepository Products { get; private set; }
         public IProductStatusesRepository ProductStatuses { get; private set; }
+        public IRolesRepository Roles { get; private set; }
+        public ICategoriesRepository Categories { get; private set; }
+        public IUserRepository Users { get; private set; }
+        public ICouponRepository Coupons { get; private set; }
+        public ITransactionRepository Transactions { get; private set; }
+        public IOrderRepository Orders { get; private set; }
+        public IOrderProductRepository OrderProducts { get; private set; }
+
 
         public int Save()
         {

@@ -14,7 +14,6 @@ namespace commerce.Repositories
             : base(dbContext)
         {
         }
-        public ApplicationDbContext ApplicationDbContext { get => dbContext as ApplicationDbContext; }
-
+        public ApplicationDbContext ApplicationDbContext => dbContext as ApplicationDbContext;
     }
 }

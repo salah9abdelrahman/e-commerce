@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace commerce.Repositories
+namespace commerce.Core
 {
     public interface IUnitOfWork : IDisposable
     {
@@ -12,6 +12,14 @@ namespace commerce.Repositories
         // and complete (or save) function
         IProductRepository Products { get; }
         IProductStatusesRepository ProductStatuses { get; }
+        IRolesRepository Roles { get; }
+        ICategoriesRepository Categories { get; }
+        IUserRepository Users { get; }
+        ICouponRepository Coupons { get; }
+        ITransactionRepository Transactions { get; }
+        IOrderRepository Orders { get; }
+        IOrderProductRepository OrderProducts { get; }
         int Save();
+
     }
 }

@@ -189,9 +189,17 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\Roles.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\UserRoles.cs" />
+    <Compile Include="Core\IRepositories\ICategoriesRepository.cs" />
+    <Compile Include="Core\IRepositories\ICouponRepository.cs" />
+    <Compile Include="Core\IRepositories\IOrderProductRepository.cs" />
+    <Compile Include="Core\IRepositories\IOrderRepository.cs" />
     <Compile Include="Core\IRepositories\IProductRepository.cs" />
     <Compile Include="Core\IRepositories\IProductStatusesRepository.cs" />
+    <Compile Include="Core\IRepositories\IRolesRepository.cs" />
+    <Compile Include="Core\IRepositories\ITransactionRepository.cs" />
+    <Compile Include="Core\IRepositories\IUserRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -225,10 +233,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\IRepositories\IRepository.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Repositories\CategoriesRepository.cs" />
+    <Compile Include="Repositories\CouponRepository.cs" />
+    <Compile Include="Repositories\OrderProductRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ProductStatusesRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
@@ -593,6 +608,11 @@
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Products\ReadOnly.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\Details.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
