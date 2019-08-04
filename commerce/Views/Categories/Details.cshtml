@@ -1,7 +1,7 @@
 ﻿@model commerce.Core.Models.Category
 
 @{
-    ViewBag.Title = "Details";
+    var categoryParentName = ViewBag.catParent;
 }
 
 <h2>Details</h2>
@@ -11,60 +11,20 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ParentCatId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ParentCatId)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.IsDeleted)
+            @Html.DisplayNameFor(model => model.ParentCatId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IsDeleted)
+            @categoryParentName
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreationTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedTime)
-        </dd>
 
     </dl>
 </div>

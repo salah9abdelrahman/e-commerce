@@ -1,6 +1,9 @@
 ﻿@using System.Diagnostics.Eventing.Reader
 @model IEnumerable<commerce.Core.Models.Product>
+@{
 
+
+}
 
 <div class="col-lg-12 text-center">
     <h2>Products</h2>
@@ -8,17 +11,14 @@
 </div>
 <div class="col-lg-12">
     <p>
-        @Html.ActionLink("Create New", "Create", null,
+        @Html.ActionLink("Create new product", "Create", null,
             htmlAttributes: new { @class = "btn btn-outline-primary" })
     </p>
 </div>
 
-<table class="table text-center" id="products_table">
+<table class="table text-center " id="products_table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductStatus.Name)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -26,7 +26,7 @@
                 @Html.DisplayNameFor(model => model.Category.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.ProductStatus.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
@@ -59,60 +59,72 @@
 
         @foreach (var item in Model)
         {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductStatus.Name)
+                </td>
 
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductStatus.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                @ViewFunctions.NoInfo(@Html.DisplayFor(modelItem => item.Description).ToString())
-
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegularPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiscountPrice)
-            </td>
-            <td>
-                @if (item.Quantity < 3)
+                <td>
+                    @if (Html.DisplayFor(modelItem => item.Description).ToString().Length > 20)
                     {
-
-                <p class="bg-danger"> @Html.DisplayFor(modelItem => item.Quantity)  </p>
+                        <p>
+                            @ViewFunctions.PipeMaxLength(Html.DisplayFor(modelItem => item.Description).ToString(),
+                            20)
+                        </p>
                     }
                     else
                     {
-                @Html.DisplayFor(modelItem => item.Quantity)
+                        <p>
+                            @ViewFunctions.NoInfo(Html.DisplayFor(modelItem => item.Description).ToString())
+                        </p>
+                    }
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegularPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiscountPrice)
+                </td>
+                <td>
+                    @if (item.Quantity < 3)
+                    {
+
+                        <p class="bg-danger"> @Html.DisplayFor(modelItem => item.Quantity) </p>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Quantity)
 
                     }
-            </td>
-            <td class="text-break ">
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td class="text-break ">
-                @Html.DisplayFor(modelItem => item.UpdatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedTime)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId },
-                    htmlAttributes: new { @class = "btn btn-primary btn-sm" }) <br />
-                @Html.ActionLink("Details", "Details", new { id = item.ProductId },
-                    htmlAttributes: new { @class = "btn btn-primary btn-sm" }) <br />
-                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId },
-                    htmlAttributes: new { @class = "btn btn-danger btn-sm" })
-            </td>
-        </tr>
+                </td>
+                <td class="text-break ">
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td class="text-break ">
+                    @Html.DisplayFor(modelItem => item.UpdatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedTime)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId },
+                        htmlAttributes: new { @class = "btn btn-outline-success btn-sm text-black-50" })
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductId },
+                        htmlAttributes: new { @class = "btn btn-outline-primary btn-sm text-black-50" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId },
+                        htmlAttributes: new { @class = "btn btn-outline-danger btn-sm text-black-50" })
+                </td>
+            </tr>
         }
     </tbody>
 

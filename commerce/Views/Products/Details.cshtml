@@ -27,6 +27,14 @@
 
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </dt>
+
+        <dd>
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.Category.Name).ToString())
+
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
 

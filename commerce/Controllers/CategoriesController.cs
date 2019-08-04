@@ -56,6 +56,10 @@ namespace commerce.Controllers
             {
                 return HttpNotFound();
             }
+
+            //get parent category name
+            var catParentName = _db.Categories.Get(category.ParentCatId)?.Name;
+            ViewBag.catParent = catParentName ?? "There is no parent category";
             return View(category);
         }
 
@@ -121,15 +125,16 @@ namespace commerce.Controllers
                 CreationTime = category.CreationTime,
                 CreatedBy = category.CreatedBy
             };
+            var catParentName = _db.Categories.Get(category.ParentCatId)?.Name;
+            ViewBag.catParentName = catParentName;
             return View(categoryView);
         }
 
         // POST: Categories/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = @"CategoryId,ParentCatId,Name,CreatedBy,CreationTime,UpdatedTime")] CreateCategoriesViewModel categoryView)
+        public ActionResult Edit([Bind(Include = @"CategoryId,ParentCatId,Name,CreatedBy,CreationTime,UpdatedTime")]
+            CreateCategoriesViewModel categoryView)
         {
             if (ModelState.IsValid)
             {
@@ -161,6 +166,9 @@ namespace commerce.Controllers
             {
                 return HttpNotFound();
             }
+
+            var catParentName = _db.Categories.Get(category.ParentCatId).Name;
+            ViewBag.catParent = catParentName;
             return View(category);
         }
 
@@ -171,6 +179,8 @@ namespace commerce.Controllers
         {
             Category category = _db.Categories.Get(id);
             category.IsDeleted = true;
+            category.UpdatedBy = User.Identity.Name;
+            category.UpdatedTime = DateTime.Now;
             _db.Save();
             return RedirectToAction("Index");
         }

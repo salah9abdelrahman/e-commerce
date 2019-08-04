@@ -44,7 +44,7 @@ namespace commerce.Controllers
         {
             var status = _db.ProductStatuses.GetAll(x => x.IsDeleted == false);
             ViewBag.ProductStatusId = new SelectList(status, "ProductStatusId", "Name");
-            ViewBag.Categories = new SelectList(_db.Categories.GetAll(x => x.IsDeleted == false),
+            ViewBag.CategoryId = new SelectList(_db.Categories.GetAll(x => x.IsDeleted == false),
                 "CategoryId", "Name");
             return View();
         }
@@ -67,6 +67,8 @@ namespace commerce.Controllers
 
             ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(x => x.IsDeleted == false),
                 "ProductStatusId", "Name", product.ProductStatusId);
+            ViewBag.CategoryId = new SelectList(_db.Categories.GetAll(x => x.IsDeleted == false),
+                "CategoryId", "Name");
             return View(product);
         }
 
@@ -84,6 +86,8 @@ namespace commerce.Controllers
             }
             ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(x => x.IsDeleted == false),
                 "ProductStatusId", "Name", product.ProductStatusId);
+            ViewBag.CategoryId = new SelectList(_db.Categories.GetAll(x => x.IsDeleted == false),
+                "CategoryId", "Name");
             return View(product);
         }
 
@@ -93,7 +97,7 @@ namespace commerce.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = @"ProductId,Name,Description,RegularPrice,DiscountPrice,Quantity,
-                            ProductStatusId")] Product product)
+                            ProductStatusId,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +112,7 @@ namespace commerce.Controllers
                 _product.IsDeleted = false;
                 _product.UpdatedTime = DateTime.Now;
                 _product.UpdatedBy = User.Identity.Name;
-                //categories
+                _product.CategoryId = product.CategoryId;
                 _db.Save();
                 return RedirectToAction("Index");
             }
@@ -139,6 +143,8 @@ namespace commerce.Controllers
         {
             Product product = _db.Products.Get(id);
             product.IsDeleted = true;
+            product.UpdatedBy = User.Identity.Name;
+            product.UpdatedTime = DateTime.Now;
             _db.Save();
             return RedirectToAction("Index");
         }

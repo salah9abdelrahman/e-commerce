@@ -20,10 +20,11 @@ namespace commerce.Core.Models
         [Display(Name = " Discount price")]
         public decimal DiscountPrice { get; set; }
         public int Quantity { get; set; }
+        [Display(Name = "Product status")]
         public int ProductStatusId { get; set; }
         public virtual ProductStatus ProductStatus { get; set; }
-        [Display(Name = "Category")]
         public virtual Category Category { get; set; }
+        [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
 
