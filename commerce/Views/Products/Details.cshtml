@@ -1,4 +1,5 @@
-﻿@model commerce.Models.Product
+﻿@using commerce.Views
+@model commerce.Models.Product
 
 @{
     ViewBag.Title = "Details";
@@ -14,7 +15,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ProductStatus.Name)
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.ProductStatus.Name).ToString())
+
         </dd>
 
         <dt>
@@ -22,39 +24,36 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.Name).ToString())
 
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.Description).ToString())
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.RegularPrice)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.RegularPrice)
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.RegularPrice).ToString())
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.DiscountPrice)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.DiscountPrice)
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.DiscountPrice).ToString())
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Quantity)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Quantity)
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.Quantity).ToString())
         </dd>
 
         <dt>
@@ -62,7 +61,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CreatedBy)
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.CreatedBy).ToString())
+
         </dd>
 
         <dt>
@@ -70,7 +70,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UpdatedBy)
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.UpdatedBy).ToString())
+
         </dd>
 
         <dt>
@@ -78,7 +79,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CreationTime)
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.CreationTime).ToString())
+
         </dd>
 
         <dt>
@@ -86,7 +88,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UpdatedTime)
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.UpdatedTime).ToString())
+
         </dd>
 
     </dl>

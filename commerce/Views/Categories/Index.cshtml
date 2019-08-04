@@ -1,8 +1,7 @@
-﻿@model IEnumerable<commerce.ViewModels.CategoryViewModel>
+﻿@using commerce.Views
+@model IEnumerable<commerce.ViewModels.CategoryViewModel>
 
-@{
-    bool IsEmpty(string name) => name == "Empty";
-}
+
 
 
 <h2 class="text-center text-black-50">Categories</h2>
@@ -44,15 +43,8 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @if (IsEmpty(item.ParentCatName))
-                    {
-                        <p class="text-warning"> @Html.DisplayFor(modelItem => item.ParentCatName)</p>
-                    }
-                    else
-                    {
-                        @Html.DisplayFor(modelItem => item.ParentCatName)
+                    @ViewFunctions.NoInfo(@Html.DisplayFor(modelItem => item.ParentCatName).ToString())
 
-                    }
                 </td>
 
 

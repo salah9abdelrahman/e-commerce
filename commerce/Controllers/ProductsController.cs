@@ -99,7 +99,7 @@ namespace commerce.Controllers
                 var _product = _db.Products.Get(product.ProductId);
                 _product.Name = product.Name;
                 _product.Description = product.Description;
-                _product.ProductStatus.ProductStatusId = product.ProductStatus.ProductStatusId;
+                _product.ProductStatusId = product.ProductStatusId;
                 _product.Quantity = product.Quantity;
                 _product.DiscountPrice = product.DiscountPrice;
                 _product.RegularPrice = product.RegularPrice;

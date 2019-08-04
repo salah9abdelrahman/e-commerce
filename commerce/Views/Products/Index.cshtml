@@ -1,9 +1,8 @@
 ﻿@using System.Diagnostics.Eventing.Reader
+@using commerce.Views
 @model IEnumerable<commerce.Models.Product>
 
-@{
-    ViewBag.Title = "Index";
-}
+
 <div class="col-lg-12 text-center">
     <h2>Products</h2>
 
@@ -64,16 +63,8 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @if (!string.IsNullOrEmpty(item.Description))
-                    {
-                        @Html.DisplayFor(modelItem => item.Description)
 
-                    }
-                    else
-                    {
-                        <text>No information given.</text>
-
-                    }
+                    @ViewFunctions.NoInfo(@Html.DisplayFor(modelItem => item.Description).ToString())
 
                 </td>
                 <td>

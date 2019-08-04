@@ -1,13 +1,6 @@
-﻿@model commerce.Models.Product
+﻿@using commerce.Views
+@model commerce.Models.Product
 
-@{
-    ViewBag.Title = "Delete";
-
-    string NoInfo(string n)
-    {
-        return string.IsNullOrEmpty(n) ? "No information given" : n;
-    }
-}
 <div class="row">
     <div class=" col text-center">
         <h3>Delete item: @Model.Name</h3>
@@ -57,35 +50,35 @@
     <tbody class="table-danger">
         <tr>
             <td>
-                @NoInfo(Html.DisplayFor(model => model.Name).ToString())
+                @ViewFunctions.NoInfo((Html.DisplayFor(model => model.Name).ToString()))
             </td>
             <td>
-                @NoInfo(Html.DisplayFor(model => model.ProductStatus.Name).ToString())
+                @ViewFunctions.NoInfo(Html.DisplayFor(model => model.ProductStatus.Name).ToString())
             </td>
 
             <td>
-                @NoInfo(Html.DisplayFor(model => model.Description).ToString())
+                @ViewFunctions.NoInfo(Html.DisplayFor(model => model.Description).ToString())
             </td>
             <td>
-                @NoInfo(Html.DisplayFor(model => model.RegularPrice).ToString())
+                @ViewFunctions.NoInfo(Html.DisplayFor(model => model.RegularPrice).ToString())
             </td>
             <td>
-                @NoInfo(Html.DisplayFor(model => model.DiscountPrice).ToString())
+                @ViewFunctions.NoInfo(Html.DisplayFor(model => model.DiscountPrice).ToString())
             </td>
             <td>
-                @NoInfo(Html.DisplayFor(model => model.Quantity).ToString())
+                @ViewFunctions.NoInfo(Html.DisplayFor(model => model.Quantity).ToString())
             </td>
             <td>
-                @NoInfo(Html.DisplayFor(model => model.CreatedBy).ToString())
+                @ViewFunctions.NoInfo(Html.DisplayFor(model => model.CreatedBy).ToString())
             </td>
             <td>
-                @NoInfo(Html.DisplayFor(model => model.UpdatedBy).ToString())
+                @ViewFunctions.NoInfo(Html.DisplayFor(model => model.UpdatedBy).ToString())
             </td>
             <td>
-                @NoInfo(Html.DisplayFor(model => model.CreationTime).ToString())
+                @ViewFunctions.NoInfo(Html.DisplayFor(model => model.CreationTime).ToString())
             </td>
             <td>
-                @NoInfo(Html.DisplayFor(model => model.UpdatedTime).ToString())
+                @ViewFunctions.NoInfo(Html.DisplayFor(model => model.UpdatedTime).ToString())
             </td>
         </tr>
     </tbody>

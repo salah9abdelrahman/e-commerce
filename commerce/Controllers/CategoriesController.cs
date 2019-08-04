@@ -28,8 +28,8 @@ namespace commerce.Controllers
             var categoriesView = new List<CategoryViewModel>();
             foreach (var category in categories)
             {
-                var ParentCatId = category.ParentCatId;
-                var ParentCat = _db.Categories.Get(ParentCatId);
+                var parentCatId = category.ParentCatId;
+                var parentCat = _db.Categories.Get(parentCatId);
                 categoriesView.Add(new CategoryViewModel
                 {
                     CategoryId = category.CategoryId,
@@ -38,8 +38,7 @@ namespace commerce.Controllers
                     CreationTime = category.CreationTime,
                     UpdatedTime = category.UpdatedTime,
                     CreatedBy = category.CreatedBy,
-                    ParentCatName = ParentCat == null ? "Empty" : ParentCat.Name,
-
+                    ParentCatName = parentCat == null ? "Empty" : parentCat.Name
                 });
             }
             return View(categoriesView);
@@ -108,11 +107,21 @@ namespace commerce.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Category category = _db.Categories.Get(id);
+
             if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            var categoryView = new CreateCategoriesViewModel
+            {
+                Name = category.Name,
+                ParentCatId = category.ParentCatId,
+                Categories = _db.Categories.GetAll(x => x.IsDeleted == false),
+                CategoryId = category.CategoryId,
+                CreationTime = category.CreationTime,
+                CreatedBy = category.CreatedBy
+            };
+            return View(categoryView);
         }
 
         // POST: Categories/Edit/5
@@ -120,15 +129,24 @@ namespace commerce.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CategoryId,ParentCatId,Name,IsDeleted,CreatedBy,UpdatedBy,CreationTime,UpdatedTime")] Category category)
+        public ActionResult Edit([Bind(Include = @"CategoryId,ParentCatId,Name,CreatedBy,CreationTime,UpdatedTime")] CreateCategoriesViewModel categoryView)
         {
             if (ModelState.IsValid)
             {
-                // db.Entry(category).State = EntityState.Modified;
+                var category = _db.Categories.Get(categoryView.CategoryId);
+                category.CategoryId = categoryView.CategoryId;
+                category.Name = categoryView.Name;
+                category.ParentCatId = categoryView.ParentCatId;
+                category.CreatedBy = categoryView.CreatedBy;
+                category.CreationTime = category.CreationTime;
+                category.UpdatedBy = User.Identity.Name;
+                category.UpdatedTime = DateTime.Now;
+                category.IsDeleted = false;
+
                 _db.Save();
                 return RedirectToAction("Index");
             }
-            return View(category);
+            return View(categoryView);
         }
 
         // GET: Categories/Delete/5
@@ -152,7 +170,7 @@ namespace commerce.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = _db.Categories.Get(id);
-            _db.Categories.Remove(category);
+            category.IsDeleted = true;
             _db.Save();
             return RedirectToAction("Index");
         }
