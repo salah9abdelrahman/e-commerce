@@ -44,6 +44,8 @@ namespace commerce.Controllers
         {
             var status = _db.ProductStatuses.GetAll(x => x.IsDeleted == false);
             ViewBag.ProductStatusId = new SelectList(status, "ProductStatusId", "Name");
+            ViewBag.Categories = new SelectList(_db.Categories.GetAll(x => x.IsDeleted == false),
+                "CategoryId", "Name");
             return View();
         }
 
@@ -51,7 +53,7 @@ namespace commerce.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = @"ProductId,Name,Description,RegularPrice,DiscountPrice,Quantity,
-                        ProductStatusId")] Product product)
+                        ProductStatusId, CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
