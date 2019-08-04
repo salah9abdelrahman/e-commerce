@@ -1,11 +1,11 @@
 ﻿using commerce.Core.IRepositories;
-using commerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using commerce.Core;
+using commerce.Core.Models;
 
 namespace commerce.Repositories
 {

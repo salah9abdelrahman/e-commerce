@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using commerce.Core.IRepositories;
-using commerce.Models;
+using commerce.Core.Models;
 
 namespace commerce.Repositories
 {

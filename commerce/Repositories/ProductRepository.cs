@@ -1,10 +1,10 @@
 ﻿using commerce.Core.IRepositories;
-using commerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using commerce.Core.Models;
 
 namespace commerce.Repositories
 {
@@ -17,11 +17,12 @@ namespace commerce.Repositories
 
         public ApplicationDbContext ApplicationDbContext => dbContext as ApplicationDbContext;
 
-        public IEnumerable<Product> GetProductsWithStatus()
+        public IEnumerable<Product> GetProductsWithStatusWithCategory()
         {
             return ApplicationDbContext.Products
                 .Where(x => x.IsDeleted == false)
                 .Include(x => x.ProductStatus)
+                .Include(c => c.Category)
                 .ToList();
         }
     }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace commerce.Models
+﻿namespace commerce.Core.Models
 {
     public class UserRole : RowInformation
     {

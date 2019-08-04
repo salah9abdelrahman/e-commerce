@@ -1,4 +1,4 @@
-﻿@model IEnumerable<commerce.Models.Role>
+﻿@model IEnumerable<commerce.Core.Models.Role>
 
 @{
     ViewBag.Title = "Index";
@@ -35,7 +35,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)

@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace commerce.Models
+namespace commerce.Core.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -14,7 +10,6 @@ namespace commerce.Models
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductStatus> ProductStatuses { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<Transaction> Transactions { get; set; }

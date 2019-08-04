@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Web.Mvc;
-using commerce.Models;
+using commerce.Core.Models;
 using commerce.Repositories;
 
 namespace commerce.Controllers
@@ -18,9 +18,9 @@ namespace commerce.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = _db.Products.GetProductsWithStatus();
-            return User.IsInRole(UserRoles.CanMangeProducts) ? View(_db.Products.GetProductsWithStatus())
-                : View("ReadOnly", _db.Products.GetProductsWithStatus());
+            var products = _db.Products.GetProductsWithStatusWithCategory();
+            return User.IsInRole(UserRoles.CanMangeProducts) ? View(_db.Products.GetProductsWithStatusWithCategory())
+                : View("ReadOnly", _db.Products.GetProductsWithStatusWithCategory());
         }
 
         // GET: Products/Details/5

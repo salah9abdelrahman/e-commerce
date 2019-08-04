@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using commerce.Models;
+using commerce.Core.Models;
 
 namespace commerce.ViewModels
 {

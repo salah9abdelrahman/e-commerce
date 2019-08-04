@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201908032214559_MakeParentCatNull.Designer.cs">
       <DependentUpon>201908032214559_MakeParentCatNull.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908041342219_MakeProductCategoryOneToMany.cs" />
+    <Compile Include="Migrations\201908041342219_MakeProductCategoryOneToMany.Designer.cs">
+      <DependentUpon>201908041342219_MakeProductCategoryOneToMany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Models\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUser.cs" />
@@ -227,7 +231,6 @@
     <Compile Include="Core\Models\Coupon.cs" />
     <Compile Include="Core\Models\Order.cs" />
     <Compile Include="Core\Models\OrderProduct.cs" />
-    <Compile Include="Core\Models\ProductCategory.cs" />
     <Compile Include="Core\Models\ProductStatus.cs" />
     <Compile Include="Core\Models\RowInformation.cs" />
     <Compile Include="Core\Models\Role.cs" />
@@ -646,6 +649,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908032214559_MakeParentCatNull.resx">
       <DependentUpon>201908032214559_MakeParentCatNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041342219_MakeProductCategoryOneToMany.resx">
+      <DependentUpon>201908041342219_MakeProductCategoryOneToMany.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

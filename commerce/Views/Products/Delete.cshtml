@@ -1,5 +1,4 @@
-﻿@using commerce.Views
-@model commerce.Models.Product
+﻿@model commerce.Core.Models.Product
 
 <div class="row">
     <div class=" col text-center">
@@ -86,16 +85,16 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+@Html.AntiForgeryToken()
 
-    <div class=" row justify-content-around ">
-        <div class="col-4">
-            <input type="submit" value="Delete" class="btn btn-danger" />
-        </div>
-        <div class="col-4 ">
-            @Html.ActionLink("Back to List", "Index", null,
-                htmlAttributes: new { @class = "btn btn-outline-secondary " })
-        </div>
-
+<div class=" row justify-content-around ">
+    <div class="col-4">
+        <input type="submit" value="Delete" class="btn btn-danger" />
     </div>
+    <div class="col-4 ">
+        @Html.ActionLink("Back to List", "Index", null,
+            htmlAttributes: new { @class = "btn btn-outline-secondary " })
+    </div>
+
+</div>
 }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace commerce.Models
+namespace commerce.Core.Models
 {
     public class Product : RowInformation
     {
@@ -26,6 +22,7 @@ namespace commerce.Models
         public int Quantity { get; set; }
         public int ProductStatusId { get; set; }
         public virtual ProductStatus ProductStatus { get; set; }
+        [Display(Name = "Category")]
         public virtual Category Category { get; set; }
         public int CategoryId { get; set; }
 
