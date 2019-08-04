@@ -105,10 +105,11 @@
                     }
                 </td>
                 <td class="text-break ">
-                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                    @ViewFunctions.UserEmail(Html.DisplayFor(modelItem => item.CreatedBy))
                 </td>
                 <td class="text-break ">
-                    @Html.DisplayFor(modelItem => item.UpdatedBy)
+                    @ViewFunctions.UserEmail(Html.DisplayFor(modelItem => item.UpdatedBy))
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreationTime)
