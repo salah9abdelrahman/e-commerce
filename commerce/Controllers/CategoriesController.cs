@@ -32,6 +32,7 @@ namespace commerce.Controllers
                 var ParentCat = _db.Categories.Get(ParentCatId);
                 categoriesView.Add(new CategoryViewModel
                 {
+                    CategoryId = category.CategoryId,
                     Name = category.Name,
                     UpdatedBy = category.UpdatedBy,
                     CreationTime = category.CreationTime,

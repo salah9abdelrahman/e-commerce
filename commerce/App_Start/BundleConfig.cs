@@ -20,16 +20,20 @@ namespace commerce
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                        "~/Scripts/bootstrap.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/third").Include(
-                    "~/Scripts/respond.js",
-                    "~/Scripts/DataTables/jquery.dataTables.js",
-                    "~//Scripts/DataTables/datatables.bootstrap.js"
+                //"~/Scripts/DataTables/jquery.dataTables.js",
+                //"~//Scripts/DataTables/dataTables.bootstrap.js"
+
                 ));
 
             bundles.Add(new StyleBundle("~/Content/third").Include(
-                "~/Content/DataTables/css/jquery.dataTables.css"
+                //"~/Content/DataTables/css/jquery.dataTables.css",
+                //"~/content/DataTables/css/dataTables.bootstrap.css"
+
+
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
