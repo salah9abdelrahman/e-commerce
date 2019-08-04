@@ -16,6 +16,8 @@
                 <div class="dropdown-menu">
                     @Html.ActionLink("Products", "Index", new { controller = "Products" },
                         htmlAttributes: new { @class = "  dropdown-item" })<span class="sr-only">(current)</span>
+                    @Html.ActionLink("Categories", "Index", new { controller = "Categories" },
+                        htmlAttributes: new { @class = "  dropdown-item" })
                 </div>
 
             </li>

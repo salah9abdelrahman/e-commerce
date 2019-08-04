@@ -3,24 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using commerce.Models;
 
-namespace commerce.Models
+namespace commerce.ViewModels
 {
-    public class Category : RowInformation
+    public class CreateCategoriesViewModel
     {
-        public Category()
-        {
-            ProductCategories = new HashSet<ProductCategory>();
-        }
-        public int CategoryId { get; set; }
-
         [Display(Name = "Parent category")]
         public int? ParentCatId { get; set; }
         [Required]
         [Display(Name = "Category")]
         [StringLength(maximumLength: 200)]
         public string Name { get; set; }
-        public virtual ICollection<ProductCategory> ProductCategories { get; set; }
 
+        public IEnumerable<Category> Categories { get; set; }
     }
 }

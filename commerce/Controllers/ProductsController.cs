@@ -51,7 +51,7 @@ namespace commerce.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = @"ProductId,Name,Description,RegularPrice,DiscountPrice,Quantity,
-                        ProductStatusId,CreatedBy")] Product product)
+                        ProductStatusId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,8 @@ namespace commerce.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(x => x.IsDeleted == false), "ProductStatusId", "Name", product.ProductStatusId);
+            ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(x => x.IsDeleted == false),
+                "ProductStatusId", "Name", product.ProductStatusId);
             return View(product);
         }
 
@@ -90,7 +91,7 @@ namespace commerce.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = @"ProductId,Name,Description,RegularPrice,DiscountPrice,Quantity,
-                            ProductStatusId,IsDeleted,CreatedBy,UpdatedBy,CreationTime,UpdatedTime")] Product product)
+                            ProductStatusId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +99,7 @@ namespace commerce.Controllers
                 var _product = _db.Products.Get(product.ProductId);
                 _product.Name = product.Name;
                 _product.Description = product.Description;
-                _product.ProductStatus = product.ProductStatus;
+                _product.ProductStatus.ProductStatusId = product.ProductStatus.ProductStatusId;
                 _product.Quantity = product.Quantity;
                 _product.DiscountPrice = product.DiscountPrice;
                 _product.RegularPrice = product.RegularPrice;
@@ -109,7 +110,8 @@ namespace commerce.Controllers
                 _db.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(x => x.IsDeleted == false), "ProductStatusId", "Name", product.ProductStatusId);
+            ViewBag.ProductStatusId = new SelectList(_db.ProductStatuses.GetAll(x => x.IsDeleted == false),
+                "ProductStatusId", "Name", product.ProductStatusId);
             return View(product);
         }
 
@@ -134,7 +136,7 @@ namespace commerce.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = _db.Products.Get(id);
-            _db.Products.Remove(product);
+            product.IsDeleted = true;
             _db.Save();
             return RedirectToAction("Index");
         }

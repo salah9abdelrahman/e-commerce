@@ -19,7 +19,10 @@ namespace commerce.Repositories
 
         public IEnumerable<Product> GetProductsWithStatus()
         {
-            return ApplicationDbContext.Products.Include(x => x.ProductStatus).ToList();
+            return ApplicationDbContext.Products
+                .Where(x => x.IsDeleted == false)
+                .Include(x => x.ProductStatus)
+                .ToList();
         }
     }
 }
