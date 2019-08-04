@@ -8,10 +8,6 @@ namespace commerce.Models
 {
     public class Product : RowInformation
     {
-        public Product()
-        {
-            ProductCategories = new HashSet<ProductCategory>();
-        }
         public int ProductId { get; set; }
 
         [Required]
@@ -30,7 +26,8 @@ namespace commerce.Models
         public int Quantity { get; set; }
         public int ProductStatusId { get; set; }
         public virtual ProductStatus ProductStatus { get; set; }
-        public virtual ICollection<ProductCategory> ProductCategories { get; set; }
+        public virtual Category Category { get; set; }
+        public int CategoryId { get; set; }
 
 
     }

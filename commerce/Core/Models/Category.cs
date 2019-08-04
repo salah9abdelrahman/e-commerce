@@ -10,7 +10,7 @@ namespace commerce.Models
     {
         public Category()
         {
-            ProductCategories = new HashSet<ProductCategory>();
+            Products = new HashSet<Product>();
         }
         public int CategoryId { get; set; }
 
@@ -20,7 +20,7 @@ namespace commerce.Models
         [Display(Name = "Category")]
         [StringLength(maximumLength: 200)]
         public string Name { get; set; }
-        public virtual ICollection<ProductCategory> ProductCategories { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
 
     }
 }
