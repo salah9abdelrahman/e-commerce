@@ -190,6 +190,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProductStatusController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UserRoles.cs" />
     <Compile Include="Core\IRepositories\ICategoriesRepository.cs" />
@@ -630,6 +631,11 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\ProductStatus\Create.cshtml" />
+    <Content Include="Views\ProductStatus\Delete.cshtml" />
+    <Content Include="Views\ProductStatus\Details.cshtml" />
+    <Content Include="Views\ProductStatus\Edit.cshtml" />
+    <Content Include="Views\ProductStatus\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

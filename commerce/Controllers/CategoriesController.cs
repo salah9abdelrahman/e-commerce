@@ -167,8 +167,8 @@ namespace commerce.Controllers
                 return HttpNotFound();
             }
 
-            var catParentName = _db.Categories.Get(category.ParentCatId).Name;
-            ViewBag.catParent = catParentName;
+            var catParentName = _db.Categories.Get(category.ParentCatId)?.Name;
+            ViewBag.catParent = catParentName ?? "There is no parent category";
             return View(category);
         }
 
