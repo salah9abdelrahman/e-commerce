@@ -15,7 +15,6 @@ namespace commerce.Core.Models
         [Display(Name = "Role")]
         [StringLength(maximumLength: 70)]
         public string Name { get; set; }
-        public int UserRoleId { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

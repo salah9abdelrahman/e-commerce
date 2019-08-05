@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201908041342219_MakeProductCategoryOneToMany.Designer.cs">
       <DependentUpon>201908041342219_MakeProductCategoryOneToMany.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908051115006_FixingRoleTableFK.cs" />
+    <Compile Include="Migrations\201908051115006_FixingRoleTableFK.Designer.cs">
+      <DependentUpon>201908051115006_FixingRoleTableFK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Models\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUser.cs" />
@@ -658,6 +662,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908041342219_MakeProductCategoryOneToMany.resx">
       <DependentUpon>201908041342219_MakeProductCategoryOneToMany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908051115006_FixingRoleTableFK.resx">
+      <DependentUpon>201908051115006_FixingRoleTableFK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

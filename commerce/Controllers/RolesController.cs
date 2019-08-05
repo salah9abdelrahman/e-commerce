@@ -13,18 +13,18 @@ namespace commerce.Controllers
 {
     public class RolesController : Controller
     {
-        private readonly UnitOfWork db;
+        private readonly UnitOfWork _db;
 
         public RolesController()
         {
-            db = new UnitOfWork(new ApplicationDbContext());
+            _db = new UnitOfWork(new ApplicationDbContext());
         }
 
 
         // GET: Roles
         public ActionResult Index()
         {
-            return View(db.Roles.GetAll(x => x.IsDeleted == false));
+            return View(_db.Roles.GetAll(x => x.IsDeleted == false));
         }
 
         // GET: Roles/Details/5
@@ -34,7 +34,7 @@ namespace commerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Get(id);
+            Role role = _db.Roles.Get(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -53,12 +53,15 @@ namespace commerce.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RoleId,Name,UserRoleId,IsDeleted,CreatedBy,UpdatedBy,CreationTime,UpdatedTime")] Role role)
+        public ActionResult Create([Bind(Include = "Name")] Role role)
         {
             if (ModelState.IsValid)
             {
-                db.Roles.Add(role);
-                db.Save();
+                role.CreationTime = DateTime.Now;
+                role.CreatedBy = User.Identity.Name;
+                role.IsDeleted = false;
+                _db.Roles.Add(role);
+                _db.Save();
                 return RedirectToAction("Index");
             }
 
@@ -72,7 +75,7 @@ namespace commerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Get(id);
+            Role role = _db.Roles.Get(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -85,12 +88,19 @@ namespace commerce.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoleId,Name,UserRoleId,IsDeleted,CreatedBy,UpdatedBy,CreationTime,UpdatedTime")] Role role)
+        public ActionResult Edit([Bind(Include = "RoleId,Name,CreatedBy,CreationTime")] Role role)
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(role).State = EntityState.Modified;
-                db.Save();
+                var roleEdited = _db.Roles.Get(role.RoleId);
+                roleEdited.Name = role.Name;
+                roleEdited.RoleId = role.RoleId;
+                roleEdited.CreatedBy = role.CreatedBy;
+                roleEdited.CreationTime = role.CreationTime;
+                roleEdited.IsDeleted = false;
+                roleEdited.UpdatedBy = User.Identity.Name;
+                roleEdited.UpdatedTime = DateTime.Now;
+                _db.Save();
                 return RedirectToAction("Index");
             }
             return View(role);
@@ -103,7 +113,7 @@ namespace commerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Get(id);
+            Role role = _db.Roles.Get(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -116,9 +126,11 @@ namespace commerce.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Role role = db.Roles.Get(id);
-            //db.Role.Remove(role);
-            db.Save();
+            Role role = _db.Roles.Get(id);
+            role.IsDeleted = true;
+            role.UpdatedBy = User.Identity.Name;
+            role.UpdatedTime = DateTime.Now;
+            _db.Save();
             return RedirectToAction("Index");
         }
 
@@ -126,7 +138,7 @@ namespace commerce.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

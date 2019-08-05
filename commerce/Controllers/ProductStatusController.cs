@@ -91,7 +91,6 @@ namespace commerce.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(productStatus).State = EntityState.Modified;
                 var productStatusEdited = _db.ProductStatuses.Get(productStatus.ProductStatusId);
                 productStatusEdited.Name = productStatus.Name;
                 productStatusEdited.ProductStatusId = productStatus.ProductStatusId;
@@ -127,6 +126,8 @@ namespace commerce.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             ProductStatus productStatus = _db.ProductStatuses.Get(id);
+            productStatus.UpdatedBy = User.Identity.Name;
+            productStatus.UpdatedTime = DateTime.Now;
             productStatus.IsDeleted = true;
             _db.Save();
             return RedirectToAction("Index");
