@@ -1,0 +1,80 @@
+﻿@model IEnumerable<commerce.ViewModels.CategoryViewModel>
+
+<h2 class="text-center text-black-50">Categories</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table  table-hover " id="categories_table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentCatName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @ViewFunctions.NoInfo(@Html.DisplayFor(modelItem => item.ParentCatName).ToString())
+
+                </td>
+
+
+                <td class="text-break">
+                    @ViewFunctions.UserEmail(Html.DisplayFor(modelItem => item.CreatedBy))
+                </td>
+                <td class="text-break">
+                    @ViewFunctions.UserEmail(Html.DisplayFor(modelItem => item.UpdatedBy))
+                </td>
+                <td class="text-break">
+                    @Html.DisplayFor(modelItem => item.CreationTime)
+                </td>
+                <td class="text-break">
+                    @Html.DisplayFor(modelItem => item.UpdatedTime)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+@*@section scripts {
+
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $('#categories_table').DataTable({ "sPaginationType": "full_numbers" });
+            });
+
+        </script>
+
+    }*@

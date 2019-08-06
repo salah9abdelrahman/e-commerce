@@ -1,0 +1,111 @@
+﻿@model commerce.Core.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="col-lg-12">
+    <h2>Details of @Model.Name</h2>
+</div>
+<div class="col-lg-8">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductStatus.Name)
+        </dt>
+
+        <dd>
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.ProductStatus.Name).ToString())
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.Name).ToString())
+
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </dt>
+
+        <dd>
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.Category.Name).ToString())
+
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.Description).ToString())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegularPrice)
+        </dt>
+        <dd>
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.RegularPrice).ToString())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountPrice)
+        </dt>
+        <dd>
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.DiscountPrice).ToString())
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.Quantity).ToString())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.CreatedBy).ToString())
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedBy)
+        </dt>
+
+        <dd>
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.UpdatedBy).ToString())
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationTime)
+        </dt>
+
+        <dd>
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.CreationTime).ToString())
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedTime)
+        </dt>
+
+        <dd>
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.UpdatedTime).ToString())
+
+        </dd>
+
+    </dl>
+</div>
+<div class="col-lg-4 ">
+
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId },
+        htmlAttributes: new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Back to List", "Index", null,
+        htmlAttributes: new { @class = "btn btn-primary" })
+
+</div>
