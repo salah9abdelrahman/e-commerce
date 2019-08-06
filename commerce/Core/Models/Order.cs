@@ -18,8 +18,8 @@ namespace commerce.Core.Models
         public decimal Total { get; set; }
         public int CouponId { get; set; }
         public virtual Coupon Coupon { get; set; }
-        public int UserId { get; set; }
-        public virtual User User { get; set; }
+        public string UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
         public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }
 

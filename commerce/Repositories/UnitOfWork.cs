@@ -19,7 +19,6 @@ namespace commerce.Repositories
             ProductStatuses = new ProductStatusesRepository(context);
             Roles = new RoleRepository(context);
             Categories = new CategoriesRepository(context);
-            Users = new UserRepository(context);
             Coupons = new CouponRepository(context);
             Transactions = new TransactionRepository(context);
             Orders = new OrderRepository(context);
@@ -30,7 +29,6 @@ namespace commerce.Repositories
         public IProductStatusesRepository ProductStatuses { get; private set; }
         public IRolesRepository Roles { get; private set; }
         public ICategoriesRepository Categories { get; private set; }
-        public IUserRepository Users { get; private set; }
         public ICouponRepository Coupons { get; private set; }
         public ITransactionRepository Transactions { get; private set; }
         public IOrderRepository Orders { get; private set; }

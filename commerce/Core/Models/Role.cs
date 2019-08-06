@@ -7,7 +7,7 @@ namespace commerce.Core.Models
     {
         public Role()
         {
-            UserRoles = new HashSet<UserRole>();
+            ApplicationUsers = new HashSet<ApplicationUser>();
         }
         public int RoleId { get; set; }
 
@@ -15,6 +15,6 @@ namespace commerce.Core.Models
         [Display(Name = "Role")]
         [StringLength(maximumLength: 70)]
         public string Name { get; set; }
-        public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual IEnumerable<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
