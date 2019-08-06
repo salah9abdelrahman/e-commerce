@@ -14,7 +14,6 @@ namespace commerce.Core
         IProductStatusesRepository ProductStatuses { get; }
         IRolesRepository Roles { get; }
         ICategoriesRepository Categories { get; }
-        IUserRepository Users { get; }
         ICouponRepository Coupons { get; }
         ITransactionRepository Transactions { get; }
         IOrderRepository Orders { get; }

@@ -201,7 +201,6 @@
     <Compile Include="Core\IRepositories\IProductStatusesRepository.cs" />
     <Compile Include="Core\IRepositories\IRolesRepository.cs" />
     <Compile Include="Core\IRepositories\ITransactionRepository.cs" />
-    <Compile Include="Core\IRepositories\IUserRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,6 +228,30 @@
     <Compile Include="Migrations\201908051115006_FixingRoleTableFK.Designer.cs">
       <DependentUpon>201908051115006_FixingRoleTableFK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908051537407_ApplicationUser.cs" />
+    <Compile Include="Migrations\201908051537407_ApplicationUser.Designer.cs">
+      <DependentUpon>201908051537407_ApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908051809400_AppicationUserInfo.cs" />
+    <Compile Include="Migrations\201908051809400_AppicationUserInfo.Designer.cs">
+      <DependentUpon>201908051809400_AppicationUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908051949147_FixingApplicationUser.cs" />
+    <Compile Include="Migrations\201908051949147_FixingApplicationUser.Designer.cs">
+      <DependentUpon>201908051949147_FixingApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908061541186_ApplicationIdString.cs" />
+    <Compile Include="Migrations\201908061541186_ApplicationIdString.Designer.cs">
+      <DependentUpon>201908061541186_ApplicationIdString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908061602082_RemoveUserRoleTable.cs" />
+    <Compile Include="Migrations\201908061602082_RemoveUserRoleTable.Designer.cs">
+      <DependentUpon>201908061602082_RemoveUserRoleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908061609527_ApplicationUserTimes.cs" />
+    <Compile Include="Migrations\201908061609527_ApplicationUserTimes.Designer.cs">
+      <DependentUpon>201908061609527_ApplicationUserTimes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Models\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUser.cs" />
@@ -240,8 +263,6 @@
     <Compile Include="Core\Models\RowInformation.cs" />
     <Compile Include="Core\Models\Role.cs" />
     <Compile Include="Core\Models\Transaction.cs" />
-    <Compile Include="Core\Models\User.cs" />
-    <Compile Include="Core\Models\UserRole.cs" />
     <Compile Include="Core\Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\IRepositories\IRepository.cs" />
@@ -256,7 +277,6 @@
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
@@ -277,6 +297,7 @@
     <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\SetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Controllers\ViewFunctions.cs" />
@@ -581,33 +602,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -617,29 +611,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Shared\_NavBar.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Products\ReadOnly.cshtml" />
-    <Content Include="Views\Roles\Create.cshtml" />
-    <Content Include="Views\Roles\Delete.cshtml" />
-    <Content Include="Views\Roles\Details.cshtml" />
-    <Content Include="Views\Roles\Edit.cshtml" />
-    <Content Include="Views\Roles\Index.cshtml" />
-    <Content Include="Views\Categories\Create.cshtml" />
-    <Content Include="Views\Categories\Delete.cshtml" />
-    <Content Include="Views\Categories\Details.cshtml" />
-    <Content Include="Views\Categories\Edit.cshtml" />
-    <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\ProductStatus\Create.cshtml" />
-    <Content Include="Views\ProductStatus\Delete.cshtml" />
-    <Content Include="Views\ProductStatus\Details.cshtml" />
-    <Content Include="Views\ProductStatus\Edit.cshtml" />
-    <Content Include="Views\ProductStatus\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -665,6 +636,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908051115006_FixingRoleTableFK.resx">
       <DependentUpon>201908051115006_FixingRoleTableFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908051537407_ApplicationUser.resx">
+      <DependentUpon>201908051537407_ApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908051809400_AppicationUserInfo.resx">
+      <DependentUpon>201908051809400_AppicationUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908051949147_FixingApplicationUser.resx">
+      <DependentUpon>201908051949147_FixingApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908061541186_ApplicationIdString.resx">
+      <DependentUpon>201908061541186_ApplicationIdString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908061602082_RemoveUserRoleTable.resx">
+      <DependentUpon>201908061602082_RemoveUserRoleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908061609527_ApplicationUserTimes.resx">
+      <DependentUpon>201908061609527_ApplicationUserTimes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

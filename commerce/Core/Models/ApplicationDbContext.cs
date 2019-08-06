@@ -13,8 +13,6 @@ namespace commerce.Core.Models
         public DbSet<ProductStatus> ProductStatuses { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<User> User { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
 
         public ApplicationDbContext() : base("Entites", throwIfV1Schema: false)
         {
@@ -26,5 +24,6 @@ namespace commerce.Core.Models
             return new ApplicationDbContext();
 
         }
+
     }
 }
