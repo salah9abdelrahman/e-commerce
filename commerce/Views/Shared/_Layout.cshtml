@@ -6,13 +6,19 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/third")
+    @Styles.Render("~/bundles/third")
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
 
 </head>
 <body>
     @Html.Partial("_NavBar")
-    <div class="container body-content">
-        @RenderBody()
+    <div class="container-fluid body-content">
+        <div class="row">
+            @Html.Partial("_SideBar")
+            <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                @RenderBody()
+            </div>
+        </div>
 
         <hr />
         <footer>

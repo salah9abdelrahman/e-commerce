@@ -27,12 +27,12 @@ namespace commerce
             bundles.Add(new ScriptBundle("~/bundles/third").Include(
                 //"~/Scripts/DataTables/jquery.dataTables.js",
                 //"~//Scripts/DataTables/dataTables.bootstrap.js"
-
                 ));
 
             bundles.Add(new StyleBundle("~/Content/third").Include(
                 //"~/Content/DataTables/css/jquery.dataTables.css",
                 //"~/content/DataTables/css/dataTables.bootstrap.css"
+                "~/content/font-awesome.css"
 
 
                 ));

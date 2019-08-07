@@ -10,5 +10,7 @@ namespace commerce.Core.IRepositories
 {
     public interface IOrderRepository : IRepository<Order>
     {
+        IEnumerable<Order> GetOrdersWithCouponWithUser();
+        Order GetOneOrderWithCouponWithUser(int id);
     }
 }

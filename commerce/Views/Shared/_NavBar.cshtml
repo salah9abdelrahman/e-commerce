@@ -1,4 +1,4 @@
-﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+﻿<nav class="col navbar navbar-expand-lg navbar-dark bg-primary fixed-top flex-md-nowrap  shadow">
     @Html.ActionLink("Salah", "Index", "Home",
         new { area = "" }, new { @class = "navbar-brand" })
 
@@ -7,7 +7,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class=" navbar-collapse collapse" id="navbarHome">
+    <div class=" navbar-collapse collapse " id="navbarHome">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active text-white dropdown">
                 <a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
@@ -22,9 +22,13 @@
                         htmlAttributes: new { @class = "  dropdown-item" })
                     @Html.ActionLink("Roles", "Index", new { controller = "Roles" },
                         htmlAttributes: new { @class = "  dropdown-item" })
-                    @Html.ActionLink("Customers", "Index", new { controller = "Customers" },
-                        htmlAttributes: new { @class = "  dropdown-item" })
                     @Html.ActionLink("Coupons", "Index", new { controller = "Coupons" },
+                        htmlAttributes: new { @class = "  dropdown-item" })
+                    @Html.ActionLink("View customers", "Index", new { controller = "Customers" },
+                        htmlAttributes: new { @class = "  dropdown-item" })
+                    @Html.ActionLink("View orders", "Index", new { controller = "Orders" },
+                        htmlAttributes: new { @class = "  dropdown-item" })
+                    @Html.ActionLink("View transactions", "Index", new { controller = "Transactions" },
                         htmlAttributes: new { @class = "  dropdown-item" })
                 </div>
 

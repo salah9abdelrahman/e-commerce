@@ -10,5 +10,6 @@ namespace commerce.Core.IRepositories
 {
     public interface ITransactionRepository : IRepository<Transaction>
     {
+        IEnumerable<Transaction> GetTransactionsWithOrder();
     }
 }

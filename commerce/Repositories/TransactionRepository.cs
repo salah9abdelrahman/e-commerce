@@ -14,5 +14,11 @@ namespace commerce.Repositories
         {
         }
         public ApplicationDbContext ApplicationDbContext => dbContext as ApplicationDbContext;
+
+        public IEnumerable<Transaction> GetTransactionsWithOrder()
+        {
+            return ApplicationDbContext.Transactions.Include(t => t.Order).ToList();
+        }
+        //db.Transactions.Include(t => t.Order);
     }
 }
