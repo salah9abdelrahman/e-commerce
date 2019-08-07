@@ -5,7 +5,7 @@ namespace commerce.Core.Models
 {
     public class RowInformation
     {
-        public bool? IsDeleted { get; set; }
+        public bool IsDeleted { get; set; } = false;
         [Display(Name = "Created By")]
         public string CreatedBy { get; set; }
         [Display(Name = "Updated By")]

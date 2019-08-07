@@ -18,6 +18,7 @@ namespace commerce.Core
         ITransactionRepository Transactions { get; }
         IOrderRepository Orders { get; }
         IOrderProductRepository OrderProducts { get; }
+        IApplicationUsersRepository ApplicationUsers { get; }
         int Save();
 
     }

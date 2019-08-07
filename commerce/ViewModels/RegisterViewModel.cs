@@ -1,4 +1,5 @@
-﻿using System;
+﻿using commerce.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,5 +24,19 @@ namespace commerce.ViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [StringLength(100)]
+        [Display(Name = "First name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [Display(Name = "Last name")]
+        public string LastName { get; set; }
+        [Required]
+        [Display(Name = "Register as")]
+        public int roleId { get; set; }
+        [Display(Name = "Phone number")]
+        public string PhoneNumber { get; set; }
     }
 }

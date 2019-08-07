@@ -20,7 +20,8 @@ namespace commerce
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                        "~/Scripts/bootstrap.js"
+                        "~/Scripts/bootstrap.js",
+                        "~/Scripts/bootbox.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/third").Include(

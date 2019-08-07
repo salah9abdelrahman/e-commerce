@@ -37,6 +37,11 @@ namespace commerce.Repositories
             return dbContext.Set<TEntity>().Find(id);
         }
 
+        public TEntity Get(string id)
+        {
+            return dbContext.Set<TEntity>().Find(id);
+        }
+
         public IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate)
         {
             return dbContext.Set<TEntity>().Where(predicate).ToList();

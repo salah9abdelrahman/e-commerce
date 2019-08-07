@@ -16,9 +16,12 @@ namespace commerce.Core.Models
             Orders = new HashSet<Order>();
         }
         [StringLength(100)]
+        [Display(Name = "First name")]
         public string FirstName { get; set; }
+
         [Required]
         [StringLength(100)]
+        [Display(Name = "Last name")]
         public string LastName { get; set; }
         public int RoleId { get; set; }
         public virtual Role Role { get; set; }
@@ -29,7 +32,7 @@ namespace commerce.Core.Models
 
         public virtual ICollection<Order> Orders { get; set; }
 
-        public bool? IsDeleted { get; set; }
+        public bool IsDeleted { get; set; } = false;
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

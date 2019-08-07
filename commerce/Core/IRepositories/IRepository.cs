@@ -7,6 +7,7 @@ namespace commerce.Core.IRepositories
     public interface IRepository<TEntity> where TEntity : class
     {
         TEntity Get(int? id);
+        TEntity Get(string id);
         IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate);
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 

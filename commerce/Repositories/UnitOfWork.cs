@@ -23,6 +23,7 @@ namespace commerce.Repositories
             Transactions = new TransactionRepository(context);
             Orders = new OrderRepository(context);
             OrderProducts = new OrderProductRepository(context);
+            ApplicationUsers = new ApplicationUserRepository(context);
         }
 
         public IProductRepository Products { get; private set; }
@@ -34,6 +35,7 @@ namespace commerce.Repositories
         public IOrderRepository Orders { get; private set; }
         public IOrderProductRepository OrderProducts { get; private set; }
 
+        public IApplicationUsersRepository ApplicationUsers { get; private set; }
 
         public int Save()
         {

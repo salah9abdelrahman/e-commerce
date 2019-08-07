@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using commerce.ViewModels;
 using Microsoft.AspNet.Identity.EntityFramework;
+using commerce.Repositories;
 
 namespace commerce.Controllers
 {
@@ -141,6 +142,10 @@ namespace commerce.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            var unitOfWork = new UnitOfWork(new ApplicationDbContext());
+            var roles = unitOfWork.Roles.GetAll(x => x.IsDeleted == false);
+            ViewBag.roleId = new SelectList(roles, "roleId", "Name");
+
             return View();
         }
 
@@ -157,8 +162,11 @@ namespace commerce.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    // FirstName = model.
-
+                    CreationTime = DateTime.Now,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    RoleId = model.roleId,
+                    PhoneNumber = model.PhoneNumber
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
