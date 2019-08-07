@@ -11,124 +11,126 @@ using commerce.Repositories;
 
 namespace commerce.Controllers
 {
-    public class RolesController : Controller
+    public class CouponsController : Controller
     {
-        private readonly UnitOfWork _db;
-
-        public RolesController()
+        private readonly UnitOfWork db;
+        public CouponsController()
         {
-            _db = new UnitOfWork(new ApplicationDbContext());
+            db = new UnitOfWork(new ApplicationDbContext());
         }
 
-
-        // GET: Roles
+        // GET: Coupons
         public ActionResult Index()
         {
-            return View(_db.Roles.GetAll(x => x.IsDeleted == false));
+            return View(db.Coupons.GetAll(x => x.IsDeleted == false));
         }
 
-        // GET: Roles/Details/5
+        // GET: Coupons/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = _db.Roles.Get(id);
-            if (role == null)
+            Coupon coupon = db.Coupons.Get(id);
+            if (coupon == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return View(coupon);
         }
 
-        // GET: Roles/Create
+        // GET: Coupons/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Roles/Create
+        // POST: Coupons/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name")] Role role)
+        public ActionResult Create([Bind(Include = "CouponId,Code,Description,Active,Value,StartDate,EndDate")]
+        Coupon coupon)
         {
             if (ModelState.IsValid)
             {
-                role.CreationTime = DateTime.Now;
-                role.CreatedBy = User.Identity.Name;
-                _db.Roles.Add(role);
-                _db.Save();
+                coupon.CreationTime = DateTime.Now;
+                coupon.CreatedBy = User.Identity.Name;
+                db.Coupons.Add(coupon);
+                db.Save();
                 return RedirectToAction("Index");
             }
 
-            return View(role);
+            return View(coupon);
         }
 
-        // GET: Roles/Edit/5
+        // GET: Coupons/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = _db.Roles.Get(id);
-            if (role == null)
+            Coupon coupon = db.Coupons.Get(id);
+            if (coupon == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return View(coupon);
         }
 
-        // POST: Roles/Edit/5
+        // POST: Coupons/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoleId,Name,CreatedBy,CreationTime")] Role role)
+        public ActionResult Edit([Bind(Include = @"CouponId,Code,Description,Active,Value,
+                    StartDate,EndDate,CreatedBy,CreationTime")] Coupon coupon)
         {
             if (ModelState.IsValid)
             {
-                var roleEdited = _db.Roles.Get(role.RoleId);
-                roleEdited.Name = role.Name;
-                roleEdited.RoleId = role.RoleId;
-                roleEdited.CreatedBy = role.CreatedBy;
-                roleEdited.CreationTime = role.CreationTime;
-                roleEdited.UpdatedBy = User.Identity.Name;
-                roleEdited.UpdatedTime = DateTime.Now;
-                _db.Save();
+                var _coupon = db.Coupons.Get(coupon.CouponId);
+                _coupon.CouponId = coupon.CouponId;
+                _coupon.Code = coupon.Code;
+                _coupon.Active = coupon.Active;
+                _coupon.Description = coupon.Description;
+                _coupon.Value = coupon.Value;
+                _coupon.StartDate = coupon.StartDate;
+                _coupon.CreatedBy = coupon.CreatedBy;
+                _coupon.CreationTime = coupon.CreationTime;
+                _coupon.UpdatedBy = User.Identity.Name;
+                _coupon.UpdatedTime = DateTime.Now;
+                db.Save();
                 return RedirectToAction("Index");
             }
-            return View(role);
+            return View(coupon);
         }
 
-        // GET: Roles/Delete/5
+        // GET: Coupons/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = _db.Roles.Get(id);
-            if (role == null)
+            Coupon coupon = db.Coupons.Get(id);
+            if (coupon == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return View(coupon);
         }
 
-        // POST: Roles/Delete/5
+        // POST: Coupons/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Role role = _db.Roles.Get(id);
-            role.IsDeleted = true;
-            role.UpdatedBy = User.Identity.Name;
-            role.UpdatedTime = DateTime.Now;
-            _db.Save();
+            Coupon coupon = db.Coupons.Get(id);
+            coupon.IsDeleted = true;
+            db.Save();
             return RedirectToAction("Index");
         }
 
@@ -136,7 +138,7 @@ namespace commerce.Controllers
         {
             if (disposing)
             {
-                _db.Dispose();
+                db.Dispose();
             }
             base.Dispose(disposing);
         }
