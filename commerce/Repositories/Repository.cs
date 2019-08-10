@@ -57,5 +57,10 @@ namespace commerce.Repositories
         {
             dbContext.Set<TEntity>().RemoveRange(entities);
         }
+
+        public int Count()
+        {
+            return dbContext.Set<TEntity>().Count();
+        }
     }
 }

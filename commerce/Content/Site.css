@@ -31,3 +31,8 @@ textarea {
     background-color: cadetblue;
     color: aliceblue;
 }
+
+.homeCard {
+    max-width: 234px;
+    min-width: 210px;
+}

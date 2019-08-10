@@ -32,10 +32,7 @@ namespace commerce
             bundles.Add(new StyleBundle("~/Content/third").Include(
                 //"~/Content/DataTables/css/jquery.dataTables.css",
                 //"~/content/DataTables/css/dataTables.bootstrap.css"
-                "~/content/font-awesome.css"
-
-
-                ));
+                ).Include("~/Content/all.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
