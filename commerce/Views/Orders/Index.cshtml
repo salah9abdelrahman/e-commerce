@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<commerce.Core.Models.Order>
 
-<table class="table">
+<table class="table text-center table-responsive" id="orders_table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Coupon.Code)
@@ -60,3 +60,13 @@
     }
 
 </table>
+
+@section scripts {
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#orders_table').DataTable();
+        });</script>
+
+}

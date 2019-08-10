@@ -6,7 +6,7 @@
 @*<p>
         @Html.ActionLink("Create New", "Create")
     </p>*@
-<table class="table">
+<table class="table text-center table-responsive" id="customers_table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.RegisterAs)
@@ -75,3 +75,12 @@
 
 </table>
 
+@section scripts {
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#customers_table').DataTable();
+        });</script>
+
+}

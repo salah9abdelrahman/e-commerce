@@ -18,5 +18,7 @@ namespace commerce.ViewModels
         public int OrdersCount { get; set; }
         [Display(Name = "Coupons")]
         public int CouponsCount { get; set; }
+
+        public string UserName { get; set; }
     }
 }

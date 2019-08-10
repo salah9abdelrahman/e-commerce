@@ -26,7 +26,8 @@ namespace commerce.Controllers
                 CustomersCount = db.ApplicationUsers.Find(x => x.IsDeleted == false).Count(),
                 OrdersCount = db.Orders.Find(x => x.IsDeleted == false).Count(),
                 ProductsCount = db.Products.Find(x => x.IsDeleted == false).Count(),
-                CouponsCount = db.Coupons.Find(x => x.IsDeleted == false).Count()
+                CouponsCount = db.Coupons.Find(x => x.IsDeleted == false).Count(),
+                UserName = User.Identity.Name
             };
             return View(homeView);
         }

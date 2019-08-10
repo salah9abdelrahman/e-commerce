@@ -25,14 +25,15 @@ namespace commerce
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/third").Include(
-                //"~/Scripts/DataTables/jquery.dataTables.js",
-                //"~//Scripts/DataTables/dataTables.bootstrap.js"
+                "~/Scripts/DataTables/jquery.dataTables.js"
+                //"~/Scripts/DataTables/dataTables.bootstrap.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/third").Include(
-                //"~/Content/DataTables/css/jquery.dataTables.css",
-                //"~/content/DataTables/css/dataTables.bootstrap.css"
-                ).Include("~/Content/all.css", new CssRewriteUrlTransform()));
+                "~/Content/DataTables/css/jquery.dataTables.css",
+                "~/content/DataTables/css/dataTables.bootstrap.css",
+                "~/Content/font-awesome.min.css"
+                ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

@@ -6,8 +6,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/bundles/third")
-    <link href="" rel="stylesheet" />
+    @Styles.Render("~/Content/third")
+    @*<link href="/Content/font-awesome.min.css" rel="stylesheet" />*@
 
 </head>
 <body>
@@ -15,7 +15,7 @@
     <div class="container-fluid body-content">
         <div class="row">
             @Html.Partial("_SideBar")
-            <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-5">
                 @RenderBody()
             </div>
         </div>

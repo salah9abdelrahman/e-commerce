@@ -18,9 +18,10 @@ namespace commerce.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = _db.Products.GetProductsWithStatusWithCategory();
-            return User.IsInRole(UserRoles.CanMangeProducts) ? View(_db.Products.GetProductsWithStatusWithCategory())
-                : View("ReadOnly", _db.Products.GetProductsWithStatusWithCategory());
+            // with roles
+            //return User.IsInRole(UserRoles.CanMangeProducts) ? View(_db.Products.GetProductsWithStatusWithCategory())
+            //    : View("ReadOnly", _db.Products.GetProductsWithStatusWithCategory());
+            return View(_db.Products.GetProductsWithStatusWithCategory());
         }
 
         // GET: Products/Details/5

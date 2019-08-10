@@ -16,7 +16,7 @@
     </p>
 </div>
 
-<table class="table text-center " id="products_table">
+<table class="table text-center table-responsive" id="products_table">
     <thead>
         <tr>
             <th>
@@ -131,15 +131,12 @@
 
 </table>
 
-@*@section scripts {
+@section scripts {
 
 
-        <script type="text/javascript">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#products_table').DataTable();
+        });</script>
 
-            $(document).ready(function () {
-                $('#products_table').DataTable();
-            });
-
-        </script>
-
-    }*@
+}

@@ -1,53 +1,58 @@
-﻿<nav class="col navbar navbar-expand-lg navbar-dark bg-primary fixed-top flex-md-nowrap  shadow">
-    @Html.ActionLink("Salah", "Index", "Home",
-        new { area = "" }, new { @class = "navbar-brand" })
+﻿<div class="row">
+    <div class="col-md-12">
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHome"
-            aria-controls="navbarHome" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <nav class="col navbar navbar-expand-lg navbar-dark bg-primary fixed-top flex-md-nowrap  shadow">
+            @Html.ActionLink("Salah", "Index", "Home",
+                new { area = "" }, new { @class = "navbar-brand" })
 
-    <div class=" navbar-collapse collapse " id="navbarHome">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active text-white dropdown">
-                <a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                    Tables
-                </a>
-                <div class="dropdown-menu">
-                    @Html.ActionLink("Products", "Index", new { controller = "Products" },
-                        htmlAttributes: new { @class = "  dropdown-item" })<span class="sr-only">(current)</span>
-                    @Html.ActionLink("Categories", "Index", new { controller = "Categories" },
-                        htmlAttributes: new { @class = "  dropdown-item" })
-                    @Html.ActionLink("Product status", "Index", new { controller = "ProductStatus" },
-                        htmlAttributes: new { @class = "  dropdown-item" })
-                    @Html.ActionLink("Roles", "Index", new { controller = "Roles" },
-                        htmlAttributes: new { @class = "  dropdown-item" })
-                    @Html.ActionLink("Coupons", "Index", new { controller = "Coupons" },
-                        htmlAttributes: new { @class = "  dropdown-item" })
-                    @Html.ActionLink("View customers", "Index", new { controller = "Customers" },
-                        htmlAttributes: new { @class = "  dropdown-item" })
-                    @Html.ActionLink("View orders", "Index", new { controller = "Orders" },
-                        htmlAttributes: new { @class = "  dropdown-item" })
-                    @Html.ActionLink("View transactions", "Index", new { controller = "Transactions" },
-                        htmlAttributes: new { @class = "  dropdown-item" })
-                </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHome"
+                    aria-controls="navbarHome" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            </li>
-            <li class="nav-item text-white">
-                @Html.ActionLink("About", "About", new { controller = "Home" },
-                    htmlAttributes: new { @class = "text-white nav-link " })
-            </li>
+            <div class=" navbar-collapse collapse " id="navbarHome">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active text-white dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                            Tables
+                        </a>
+                        <div class="dropdown-menu">
+                            @Html.ActionLink("Products", "Index", new { controller = "Products" },
+                                htmlAttributes: new { @class = "  dropdown-item" })<span class="sr-only">(current)</span>
+                            @Html.ActionLink("Categories", "Index", new { controller = "Categories" },
+                                htmlAttributes: new { @class = "  dropdown-item" })
+                            @Html.ActionLink("Product status", "Index", new { controller = "ProductStatus" },
+                                htmlAttributes: new { @class = "  dropdown-item" })
+                            @Html.ActionLink("Roles", "Index", new { controller = "Roles" },
+                                htmlAttributes: new { @class = "  dropdown-item" })
+                            @Html.ActionLink("Coupons", "Index", new { controller = "Coupons" },
+                                htmlAttributes: new { @class = "  dropdown-item" })
+                            @Html.ActionLink("View customers", "Index", new { controller = "Customers" },
+                                htmlAttributes: new { @class = "  dropdown-item" })
+                            @Html.ActionLink("View orders", "Index", new { controller = "Orders" },
+                                htmlAttributes: new { @class = "  dropdown-item" })
+                            @Html.ActionLink("View transactions", "Index", new { controller = "Transactions" },
+                                htmlAttributes: new { @class = "  dropdown-item" })
+                        </div>
 
-            <li class="nav-item text-white">
-                @Html.ActionLink("Contact", "Contact", new { controller = "Home" },
-                    htmlAttributes: new { @class = "text-white nav-link " })
-            </li>
-        </ul>
-        @Html.Partial("_LoginPartial")
+                    </li>
+                    <li class="nav-item text-white">
+                        @Html.ActionLink("About", "About", new { controller = "Home" },
+                            htmlAttributes: new { @class = "text-white nav-link " })
+                    </li>
 
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search for products">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+                    <li class="nav-item text-white">
+                        @Html.ActionLink("Contact", "Contact", new { controller = "Home" },
+                            htmlAttributes: new { @class = "text-white nav-link " })
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search for products">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
     </div>
-</nav>
+</div>
