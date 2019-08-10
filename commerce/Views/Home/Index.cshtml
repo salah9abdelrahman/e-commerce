@@ -3,16 +3,23 @@
     ViewBag.Title = "Home Page";
 }
 
+<h1>Welcome, username</h1>
+
+
 <div class="jumbotron">
-    <h1>Welcome, username</h1>
     <div class="row ">
         <div class="col-12 col-lg-4 col-md-2  ml-lg-auto homeCard">
             <div class="card text-white bg-info mb-3 d-flex ">
                 <div class="card-header">@Html.DisplayNameFor(model => model.CustomersCount)</div>
-                <div class="card-body">
+                <div class="card-body text-center">
                     <h5 class="card-title">We have:</h5>
-                    <p class="card-text">@Model.CustomersCount @Html.DisplayNameFor(model => model.CustomersCount)</p>
+                    <p class="card-text">
+                        @Html.ActionLink(Model.CustomersCount + " " + Html.DisplayNameFor(model => model.CustomersCount), "Index", new { controller = "Customers" },
+                        htmlAttributes: new { @class = "  btn btn-info text-nowrap" })
+                    </p>
+
                 </div>
+
             </div>
         </div>
 
@@ -20,9 +27,13 @@
             <div class="card text-white bg-primary mb-3 d-flex  ">
                 <div class="card-header">@Html.DisplayNameFor(model => model.ProductsCount)</div>
 
-                <div class="card-body">
-                    <h5 class="card-title">We have:</h5>
-                    <p class="card-text">@Model.ProductsCount @Html.DisplayNameFor(model => model.ProductsCount)</p>
+                <div class="card-body text-center">
+                    <h5 class="card-title ">We have:</h5>
+                    <p class="card-text">
+                        @Html.ActionLink(Model.ProductsCount + " " + Html.DisplayNameFor(model => model.ProductsCount), "Index", new { controller = "Customers" },
+                            htmlAttributes: new { @class = "  btn btn-primary text-nowrap" })
+                    </p>
+
                 </div>
             </div>
         </div>
@@ -30,11 +41,16 @@
         <div class="col-12 col-lg-4 col-md-2 homeCard mr-lg-auto">
 
             <div class="card text-white bg-success mb-3 d-flex ">
-                <div class="card-header">@Html.DisplayNameFor(model => model.CategoriesCount)</div>
-
-                <div class="card-body">
+                <div class="card-header">
+                    @Html.DisplayNameFor(model => model.CategoriesCount).
+                </div>
+                <div class="card-body text-center">
                     <h5 class="card-title">We have:</h5>
-                    <p class="card-text">@Model.CategoriesCount @Html.DisplayNameFor(model => model.CategoriesCount)</p>
+                    <p class="card-text">
+
+                        @Html.ActionLink(Model.CategoriesCount + " " + Html.DisplayNameFor(model => model.CategoriesCount), "Index", new { controller = "Customers" },
+                            htmlAttributes: new { @class = "  btn btn-success text-nowrap" })
+                    </p>
                 </div>
             </div>
         </div>
@@ -45,9 +61,12 @@
 
             <div class="card text-white bg-danger mb-3 d-flex ">
                 <div class="card-header">@Html.DisplayNameFor(model => model.OrdersCount)</div>
-                <div class="card-body">
+                <div class="card-body text-center">
                     <h5 class="card-title">We have:</h5>
-                    <p class="card-text">@Model.OrdersCount @Html.DisplayNameFor(model => model.OrdersCount)</p>
+                    <p class="card-text">
+                        @Html.ActionLink(Model.OrdersCount + " " + Html.DisplayNameFor(model => model.OrdersCount), "Index", new { controller = "Customers" },
+                            htmlAttributes: new { @class = "  btn btn-danger text-nowrap" })
+                    </p>
                 </div>
             </div>
         </div>
@@ -58,9 +77,12 @@
             <div class="card text-white bg-dark mb-3 d-flex ">
                 <div class="card-header">@Html.DisplayNameFor(model => model.CouponsCount)</div>
 
-                <div class="card-body">
+                <div class="card-body text-center">
                     <h5 class="card-title">We have:</h5>
-                    <p class="card-text">@Model.CouponsCount @Html.DisplayNameFor(model => model.CouponsCount)</p>
+                    <p class="card-text">
+                        @Html.ActionLink(Model.CouponsCount + " " + Html.DisplayNameFor(model => model.CouponsCount), "Index", new { controller = "Customers" },
+                            htmlAttributes: new { @class = "  btn btn-dark text-nowrap" })
+                    </p>
                 </div>
             </div>
         </div>
