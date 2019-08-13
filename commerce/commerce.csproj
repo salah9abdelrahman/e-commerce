@@ -202,6 +202,10 @@
     <Compile Include="Migrations\201908071122257_MakeCouponFkNullable.Designer.cs">
       <DependentUpon>201908071122257_MakeCouponFkNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908112202123_Role.cs" />
+    <Compile Include="Migrations\201908112202123_Role.Designer.cs">
+      <DependentUpon>201908112202123_Role.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="Core\IRepositories\IApplicationUsersRepository.cs" />
     <Compile Include="Core\IRepositories\ICategoriesRepository.cs" />
@@ -757,6 +761,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908071122257_MakeCouponFkNullable.resx">
       <DependentUpon>201908071122257_MakeCouponFkNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908112202123_Role.resx">
+      <DependentUpon>201908112202123_Role.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

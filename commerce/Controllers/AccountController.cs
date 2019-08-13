@@ -165,7 +165,7 @@ namespace commerce.Controllers
                     CreationTime = DateTime.Now,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    RoleId = model.roleId,
+                    //RoleId = model.RoleId,
                     PhoneNumber = model.PhoneNumber
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
@@ -179,12 +179,11 @@ namespace commerce.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    ////register store manger
-                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    //var roleManger = new RoleManager<IdentityRole>(roleStore);
-                    //await roleManger.CreateAsync(new IdentityRole(Roles.CanMangeProducts));
-                    //await UserManager.AddToRoleAsync(user.Id, Roles.CanMangeProducts);
-
+                    ////register admin manager
+                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManger = new RoleManager<IdentityRole>(roleStore);
+                    await roleManger.CreateAsync(new IdentityRole(UserRoles.GeneralAdmin));
+                    await UserManager.AddToRoleAsync(user.Id, UserRoles.GeneralAdmin);
 
 
                     return RedirectToAction("Index", "Home");

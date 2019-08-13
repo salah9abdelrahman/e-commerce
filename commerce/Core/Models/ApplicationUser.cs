@@ -23,7 +23,7 @@ namespace commerce.Core.Models
         [StringLength(100)]
         [Display(Name = "Last name")]
         public string LastName { get; set; }
-        public int RoleId { get; set; }
+        public int? RoleId { get; set; }
         public virtual Role Role { get; set; }
         [Display(Name = "Creation time")]
         public DateTime CreationTime { get; set; }

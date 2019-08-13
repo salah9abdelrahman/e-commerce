@@ -1,33 +1,33 @@
-﻿<nav class="col-md-2 d-none d-md-block bg-light  mt-5 mb-5">
-    <ul class="nav flex-column">
+﻿<nav class="col-md-2 d-none d-md-block bg-light  mt-4 mb-5">
+    <ul class="nav flex-column mt-5">
 
         <li class="nav-item mb-4">
             @*<i class="d-inline fa fa-2x  fa-home text-primary"></i>*@
             @Html.ActionLink("Home", "Index", new { Controller = "Home" },
-                htmlAttributes: new { @class = "nav-link d-inline sideBarItem" })
+            htmlAttributes: new { @class = "nav-link d-inline sideBarItem" })
         </li>
         <li class="nav-item mb-4">
             @*<i class="d-inline fa fa-2x fa-bicycle text-primary"></i>*@
             @Html.ActionLink("View orders", "Index", new { controller = "Orders" },
-                htmlAttributes: new { @class = "nav-link d-inline sideBarItem" })
+            htmlAttributes: new { @class = "nav-link d-inline sideBarItem" })
         </li>
         <li class="nav-item mb-4">
             @*<i class="d-inline fa fa-2x fa-exclamation text-primary"></i>*@
             @Html.ActionLink("Products", "Index", new { controller = "Products" },
-                htmlAttributes: new { @class = "nav-link d-inline sideBarItem" })<span class="sr-only">(current)</span>
+            htmlAttributes: new { @class = "nav-link d-inline sideBarItem" })<span class="sr-only">(current)</span>
         </li>
         <li class="nav-item mb-4">
             @Html.ActionLink("Categories", "Index", new { controller = "Categories" },
-                htmlAttributes: new { @class = "nav-link d-inline sideBarItem" })
+            htmlAttributes: new { @class = "nav-link d-inline sideBarItem " })
         </li>
         <li class="nav-item mb-4">
             @Html.ActionLink("View customers", "Index", new { controller = "Customers" },
-                htmlAttributes: new { @class = "nav-link d-inline sideBarItem" })
+            htmlAttributes: new { @class = "nav-link d-inline sideBarItem " })
         </li>
         <li class="nav-item mb-4">
             @*<i class="d-inline fa fa-cc-paypal text-primary"></i>*@
             @Html.ActionLink("View transactions", "Index", new { controller = "Transactions" },
-                htmlAttributes: new { @class = "nav-link d-inline sideBarItem" })
+            htmlAttributes: new { @class = "nav-link d-inline sideBarItem " })
         </li>
 
     </ul>

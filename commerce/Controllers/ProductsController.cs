@@ -40,7 +40,7 @@ namespace commerce.Controllers
         }
 
         // GET: Products/Create
-        [Authorize(Roles = UserRoles.CanMangeProducts)]
+        [Authorize(Roles = UserRoles.GeneralAdmin)]
         public ActionResult Create()
         {
             var status = _db.ProductStatuses.GetAll(x => x.IsDeleted == false);

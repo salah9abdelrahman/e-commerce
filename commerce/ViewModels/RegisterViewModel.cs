@@ -33,9 +33,10 @@ namespace commerce.ViewModels
         [StringLength(100)]
         [Display(Name = "Last name")]
         public string LastName { get; set; }
-        [Required]
-        [Display(Name = "Register as")]
-        public int roleId { get; set; }
+
+        //[Display(Name = "Register as")]
+        //public int? RoleId { get; set; }
+
         [Display(Name = "Phone number")]
         public string PhoneNumber { get; set; }
     }

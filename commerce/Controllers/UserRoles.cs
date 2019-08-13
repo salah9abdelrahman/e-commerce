@@ -7,6 +7,6 @@ namespace commerce.Controllers
 {
     public static class UserRoles
     {
-        public const string CanMangeProducts = "CanMangeProducts";
+        public const string GeneralAdmin = "GeneralAdmin";
     }
 }
