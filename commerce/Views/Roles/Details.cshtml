@@ -1,13 +1,9 @@
 ﻿@model commerce.Core.Models.Role
 
-@{
-    ViewBag.Title = "Details";
-}
 
 <h2>Details</h2>
 
 <div>
-    <h4>Role</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -31,7 +27,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UpdatedBy)
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.UpdatedBy).ToString())
         </dd>
 
         <dt>
@@ -47,12 +43,13 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UpdatedTime)
+            @ViewFunctions.NoInfo(Html.DisplayFor(model => model.UpdatedTime).ToString())
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.RoleId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RoleId },
+        new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
 </p>

@@ -1,31 +1,34 @@
 ﻿@model IEnumerable<commerce.Core.Models.ProductStatus>
 
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Index</h2>
+<div class="col-lg-12 text-center text-black-50">
+    <h2>Product statuses</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table text-center table-responsive" id="productStatus_table">
+</div>
+
+<div class="col-lg-12">
+    <p>
+        @Html.ActionLink("Create new status", "Create", null,
+            htmlAttributes: new { @class = "btn btn-outline-primary" })
+    </p>
+</div>
+<table class="table text-center">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedTime)
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedTime)
+            </th>*@
         <th></th>
     </tr>
 
@@ -35,33 +38,28 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedTime)
+                </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedTime)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ProductStatusId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ProductStatusId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ProductStatusId })
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductStatusId },
+                    htmlAttributes: new { @class = "btn btn-outline-warning btn-sm text-dark" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductStatusId },
+                    htmlAttributes: new { @class = "btn btn-outline-success btn-sm text-dark" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductStatusId },
+                    htmlAttributes: new { @class = "btn btn-outline-danger btn-sm text-dark" })
             </td>
         </tr>
     }
 
 </table>
-@section scripts {
 
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#productStatus_table').DataTable();
-        });</script>
-
-}

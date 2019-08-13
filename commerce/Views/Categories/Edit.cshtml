@@ -19,16 +19,29 @@
         @Html.HiddenFor(model => model.CreationTime)
         <div class="row">
 
-            <div class="col-12 mb-2">
+            <div class="col-12 mb-4">
                 <div class="d-inline">
                     Current parent category is:
                     <p class="text-secondary d-inline">@parentCategoryName</p>
                 </div>
             </div>
+
+            <div class="col-lg-6 col-sm-12">
+                <div class="form-group col-6">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-md-2" })
+                    <div>
+                        @Html.EditorFor(model => model.Name,
+                            new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "",
+                            new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
             <div class="col-lg-6 col-sm-12">
                 <div class="form-group">
                     @Html.LabelFor(model => model.ParentCatId,
-                        htmlAttributes: new { @class = "control-label col-md-2 text-nowrap" })
+                        htmlAttributes: new { @class = " col-md-2 text-nowrap" })
                     <div>
                         @Html.DropDownListFor(model => model.ParentCatId,
                             new SelectList(Model.Categories, "CategoryId", "Name"),
@@ -39,27 +52,14 @@
                 </div>
 
             </div>
-            <div class="col-lg-6 col-sm-12">
-                <div class="form-group col-6">
-                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div>
-                        @Html.EditorFor(model => model.Name,
-                            new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Name, "",
-                            new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
         </div>
         <div class="row">
-            <div class="col-6 ">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-            <div class="col-6 ">
+            <div class="col-md-12 mr-4 ml-4 mt-3 ">
+                <input type="submit" value="Save" class="btn btn-primary mr-3" />
                 @Html.ActionLink("Back to List", "Index", null,
-                    htmlAttributes: new { @class = "btn btn-info" })
+                    htmlAttributes: new { @class = "btn btn-success" })
             </div>
+
         </div>
 
     </div>

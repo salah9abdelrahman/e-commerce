@@ -3,9 +3,10 @@
 <h2 class="text-center text-black-50">Categories</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create new category", "Create", null,
+        htmlAttributes: new { @class = "btn btn-outline-primary" })
 </p>
-<table class="table text-center table-responsive" id="categories_table">
+<table class="table text-center " id="categories_table">
     <thead>
         <tr>
             <th>
@@ -15,18 +16,18 @@
                 @Html.DisplayNameFor(model => model.ParentCatName)
             </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreationTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedTime)
-            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdatedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreationTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdatedTime)
+                </th>*@
             <th></th>
         </tr>
     </thead>
@@ -44,22 +45,25 @@
                 </td>
 
 
-                <td class="text-break">
-                    @ViewFunctions.UserEmail(Html.DisplayFor(modelItem => item.CreatedBy))
-                </td>
-                <td class="text-break">
-                    @ViewFunctions.UserEmail(Html.DisplayFor(modelItem => item.UpdatedBy))
-                </td>
-                <td class="text-break">
-                    @Html.DisplayFor(modelItem => item.CreationTime)
-                </td>
-                <td class="text-break">
-                    @Html.DisplayFor(modelItem => item.UpdatedTime)
-                </td>
+                @*<td class="text-break">
+                        @ViewFunctions.UserEmail(Html.DisplayFor(modelItem => item.CreatedBy))
+                    </td>
+                    <td class="text-break">
+                        @ViewFunctions.UserEmail(Html.DisplayFor(modelItem => item.UpdatedBy))
+                    </td>
+                    <td class="text-break">
+                        @Html.DisplayFor(modelItem => item.CreationTime)
+                    </td>
+                    <td class="text-break">
+                        @Html.DisplayFor(modelItem => item.UpdatedTime)
+                    </td>*@
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId },
+                        htmlAttributes: new { @class = "btn btn-outline-success btn-sm text-dark" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CategoryId },
+                        htmlAttributes: new { @class = "btn btn-outline-primary btn-sm text-dark" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId },
+                        htmlAttributes: new { @class = "btn btn-outline-danger btn-sm text-dark" })
                 </td>
             </tr>
         </tbody>

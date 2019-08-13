@@ -7,7 +7,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class="">
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="row">
@@ -15,13 +15,16 @@
                 <div class="form-group ">
                     @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "  col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Name,
+                            new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "",
+                            new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "text-nowrap col-md-2" })
+                    @Html.LabelFor(model => model.Description,
+                        htmlAttributes: new { @class = "text-nowrap col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Description,
                             new { htmlAttributes = new { @class = "form-control" } })
@@ -31,7 +34,8 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.RegularPrice, htmlAttributes: new { @class = "text-nowrap col-md-2" })
+                    @Html.LabelFor(model => model.RegularPrice,
+                        htmlAttributes: new { @class = "text-nowrap col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.RegularPrice,
                             new { htmlAttributes = new { @class = "form-control" } })
@@ -40,7 +44,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DiscountPrice, htmlAttributes: new { @class = "text-nowrap  col-md-2" })
+                    @Html.LabelFor(model => model.DiscountPrice,
+                        htmlAttributes: new { @class = "text-nowrap  col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.DiscountPrice,
                             new { htmlAttributes = new { @class = "form-control" } })
@@ -79,7 +84,8 @@
                         @Html.DisplayNameFor(x => x.Category.Name).ToString(),
                         htmlAttributes: new { @class = "  col-md-2" })
                     <div class="col-md-10">
-                        @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("CategoryId", null,
+                            htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.ProductStatusId,
                             "", new { @class = "text-danger" })
                     </div>

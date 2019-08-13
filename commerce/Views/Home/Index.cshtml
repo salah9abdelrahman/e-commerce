@@ -18,8 +18,10 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">We have:</h5>
                     <p class="card-text">
-                        @Html.ActionLink(Model.CustomersCount + " " + Html.DisplayNameFor(model => model.CustomersCount), "Index", new { controller = "Customers" },
-                        htmlAttributes: new { @class = "  btn btn-info text-nowrap" })
+                        @Html.ActionLink(Model.CustomersCount + " " +
+                                         Html.DisplayNameFor(model => model.CustomersCount),
+                            "Index", new { controller = "Customers" },
+                            htmlAttributes: new { @class = "  btn btn-info text-nowrap" })
                     </p>
 
                 </div>
@@ -34,7 +36,9 @@
                 <div class="card-body text-center">
                     <h5 class="card-title ">We have:</h5>
                     <p class="card-text">
-                        @Html.ActionLink(Model.ProductsCount + " " + Html.DisplayNameFor(model => model.ProductsCount), "Index", new { controller = "Customers" },
+                        @Html.ActionLink(Model.ProductsCount + " " +
+                                         Html.DisplayNameFor(model => model.ProductsCount),
+                            "Index", new { controller = "Products" },
                             htmlAttributes: new { @class = "  btn btn-primary text-nowrap" })
                     </p>
 
@@ -52,7 +56,9 @@
                     <h5 class="card-title">We have:</h5>
                     <p class="card-text">
 
-                        @Html.ActionLink(Model.CategoriesCount + " " + Html.DisplayNameFor(model => model.CategoriesCount), "Index", new { controller = "Customers" },
+                        @Html.ActionLink(Model.CategoriesCount + " " +
+                                         Html.DisplayNameFor(model => model.CategoriesCount),
+                            "Index", new { controller = "Categories" },
                             htmlAttributes: new { @class = "  btn btn-success text-nowrap" })
                     </p>
                 </div>
@@ -68,7 +74,9 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">We have:</h5>
                     <p class="card-text">
-                        @Html.ActionLink(Model.OrdersCount + " " + Html.DisplayNameFor(model => model.OrdersCount), "Index", new { controller = "Customers" },
+                        @Html.ActionLink(Model.OrdersCount + " " +
+                                         Html.DisplayNameFor(model => model.OrdersCount),
+                            "Index", new { controller = "Orders" },
                             htmlAttributes: new { @class = "  btn btn-danger text-nowrap" })
                     </p>
                 </div>
@@ -84,7 +92,9 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">We have:</h5>
                     <p class="card-text">
-                        @Html.ActionLink(Model.CouponsCount + " " + Html.DisplayNameFor(model => model.CouponsCount), "Index", new { controller = "Customers" },
+                        @Html.ActionLink(Model.CouponsCount + " " +
+                                         Html.DisplayNameFor(model => model.CouponsCount),
+                            "Index", new { controller = "Coupons" },
                             htmlAttributes: new { @class = "  btn btn-dark text-nowrap" })
                     </p>
                 </div>

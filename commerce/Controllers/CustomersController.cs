@@ -24,10 +24,10 @@ namespace commerce.Controllers
         public ActionResult Index()
         {
             var applicationUsers = db.ApplicationUsers.GetApplicationUsersWithRole();
-            var CustomersView = new List<CustomerViewModel>();
+            var customersView = new List<CustomerViewModel>();
             foreach (var customer in applicationUsers)
             {
-                CustomersView.Add(new CustomerViewModel
+                var cvm = new CustomerViewModel
                 {
                     CreationTime = customer.CreationTime,
                     Email = customer.Email,
@@ -38,9 +38,10 @@ namespace commerce.Controllers
                     UpdatedTime = customer.UpdatedTime,
                     UserId = customer.Id,
                     UserName = customer.UserName
-                });
+                };
+                customersView.Add(cvm);
             }
-            return View(CustomersView);
+            return View(customersView);
         }
 
         // GET: Customers/Details/5

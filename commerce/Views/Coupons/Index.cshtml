@@ -1,13 +1,10 @@
 ﻿@model IEnumerable<commerce.Core.Models.Coupon>
 
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
+<h2 class="text-center text-black-50">Coupons</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create new coupon", "Create", null,
+        htmlAttributes: new { @class = "btn btn-outline-primary" })
 </p>
 <table class="table text-center table-responsive" id="coupons_table">
     <tr>
@@ -29,18 +26,18 @@
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedTime)
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedTime)
+            </th>*@
         <th></th>
     </tr>
 
@@ -65,22 +62,25 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EndDate)
             </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedTime)
+                </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedTime)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CouponId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CouponId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CouponId })
+                @Html.ActionLink("Edit", "Edit", new { id = item.CouponId },
+                    htmlAttributes: new { @class = "btn btn-outline-success btn-sm text-dark" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CouponId },
+                    htmlAttributes: new { @class = "btn btn-outline-primary btn-sm text-dark" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CouponId },
+                    htmlAttributes: new { @class = "btn btn-outline-danger btn-sm text-dark" })
             </td>
         </tr>
     }
