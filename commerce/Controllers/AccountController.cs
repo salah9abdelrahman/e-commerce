@@ -180,10 +180,10 @@ namespace commerce.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     ////register admin manager
-                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    var roleManger = new RoleManager<IdentityRole>(roleStore);
-                    await roleManger.CreateAsync(new IdentityRole(UserRoles.GeneralAdmin));
-                    await UserManager.AddToRoleAsync(user.Id, UserRoles.GeneralAdmin);
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManger = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManger.CreateAsync(new IdentityRole(UserRoles.GeneralAdmin));
+                    //await UserManager.AddToRoleAsync(user.Id, UserRoles.GeneralAdmin);
 
 
                     return RedirectToAction("Index", "Home");
@@ -390,7 +390,15 @@ namespace commerce.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PhoneNumber = model.PhoneNumber,
+                    CreationTime = DateTime.Now
+                };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

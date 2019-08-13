@@ -54,15 +54,15 @@ namespace commerce
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "952468898478378",
+               appSecret: "fc91f030c511e5e23f197a6c6f31c477");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "365785745140-scqj8facd223767sbjbl9mduoh2fhh2d.apps.googleusercontent.com",
+                ClientSecret = "yjCY9WODovstYmUc_YpuPEre"
+            });
         }
     }
 }
