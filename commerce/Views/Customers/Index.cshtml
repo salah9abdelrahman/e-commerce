@@ -9,20 +9,17 @@
 <table class="table text-center table-responsive" id="customers_table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RegisterAs)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
-        <th>
+        <th class="text-nowrap">
             @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CreationTime)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedTime)
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.UpdatedTime)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
@@ -39,9 +36,6 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.RegisterAs)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
@@ -50,9 +44,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CreationTime)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedTime)
-            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.UpdatedTime)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
@@ -67,7 +61,8 @@
             <td>
                 @*@Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.UserId })|*@
-                @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserId },
+                    new { @class = "btn btn-outline-danger" })
 
             </td>
         </tr>
@@ -76,11 +71,9 @@
 </table>
 
 @section scripts {
-
-
     <script type="text/javascript">
         $(document).ready(function () {
             $('#customers_table').DataTable();
-        });</script>
-
+        });
+    </script>
 }

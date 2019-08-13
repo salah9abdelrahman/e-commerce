@@ -26,12 +26,13 @@ namespace commerce.ViewModels
 
         [Display(Name = "Phone number")]
         public string PhoneNumber { get; set; }
-        [Display(Name = "Type")]
-        public string RegisterAs { get; set; }
+
         [Display(Name = "Creation time")]
         public DateTime CreationTime { get; set; }
         [Display(Name = "Updated time")]
         public DateTime? UpdatedTime { get; set; }
+        [Display(Name = "User name")]
         public string UserName { get; set; }
+        public int? RoleId { get; set; }
     }
 }

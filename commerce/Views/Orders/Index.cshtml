@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<commerce.Core.Models.Order>
 
-<table class="table text-center table-responsive" id="orders_table">
+<table class="table text-center" id="orders_table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Coupon.Code)
@@ -53,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.CreationTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UpdatedTime)
+                @ViewFunctions.NoInfo(Html.DisplayFor(modelItem => item.UpdatedTime).ToString())
             </td>
 
         </tr>

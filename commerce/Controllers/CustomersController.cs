@@ -27,37 +27,25 @@ namespace commerce.Controllers
             var customersView = new List<CustomerViewModel>();
             foreach (var customer in applicationUsers)
             {
-                var cvm = new CustomerViewModel
+
+                customersView.Add(new CustomerViewModel
                 {
                     CreationTime = customer.CreationTime,
                     Email = customer.Email,
                     FirstName = customer.FirstName,
                     LastName = customer.LastName,
                     PhoneNumber = customer.PhoneNumber,
-                    RegisterAs = customer.Role.Name,
                     UpdatedTime = customer.UpdatedTime,
                     UserId = customer.Id,
-                    UserName = customer.UserName
-                };
-                customersView.Add(cvm);
+                    UserName = customer.UserName,
+                    RoleId = customer.RoleId
+                    //cvm.RegisterAs = customer.Role.Name;
+
+                });
             }
             return View(customersView);
         }
 
-        // GET: Customers/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ApplicationUser applicationUser = db.ApplicationUsers.Get(id);
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicationUser);
-        }
 
         //comment because you can create a customer by register it
         #region Create and edit Customer functions
@@ -140,12 +128,11 @@ namespace commerce.Controllers
                 FirstName = applicationUser.FirstName,
                 LastName = applicationUser.LastName,
                 PhoneNumber = applicationUser.PhoneNumber,
-                RegisterAs = applicationUser.Role.Name,
                 UpdatedTime = applicationUser.UpdatedTime,
                 UserId = applicationUser.Id,
                 UserName = applicationUser.UserName
+                //RegisterAs = applicationUser.Role.Name,
             };
-
             return View(customerView);
         }
 
