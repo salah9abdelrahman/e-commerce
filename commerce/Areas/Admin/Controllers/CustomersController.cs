@@ -1,29 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using commerce.Core.Models;
 using commerce.Repositories;
 using commerce.ViewModels;
 
-namespace commerce.Controllers
+namespace commerce.Areas.Admin.Controllers
 {
     public class CustomersController : Controller
     {
-        private readonly UnitOfWork db;
+        private readonly UnitOfWork _db;
         public CustomersController()
         {
-            db = new UnitOfWork(new ApplicationDbContext());
+            _db = new UnitOfWork(new ApplicationDbContext());
         }
 
         // GET: Customers
         public ActionResult Index()
         {
-            var applicationUsers = db.ApplicationUsers.GetApplicationUsersWithRole();
+            var applicationUsers = _db.ApplicationUsers.GetApplicationUsersWithRole();
             var customersView = new List<CustomerViewModel>();
             foreach (var customer in applicationUsers)
             {
@@ -116,7 +111,7 @@ namespace commerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = db.ApplicationUsers.Get(id);
+            ApplicationUser applicationUser = _db.ApplicationUsers.Get(id);
             if (applicationUser == null)
             {
                 return HttpNotFound();
@@ -141,9 +136,9 @@ namespace commerce.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            ApplicationUser applicationUser = db.ApplicationUsers.Get(id);
-            db.ApplicationUsers.Remove(applicationUser);
-            db.Save();
+            ApplicationUser applicationUser = _db.ApplicationUsers.Get(id);
+            _db.ApplicationUsers.Remove(applicationUser);
+            _db.Save();
             return RedirectToAction("Index");
         }
 
@@ -151,7 +146,7 @@ namespace commerce.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

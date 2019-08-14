@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using commerce.Core.Models;
 using commerce.Repositories;
 
-namespace commerce.Controllers
+namespace commerce.Areas.Admin.Controllers
 {
     public class TransactionsController : Controller
     {
-        private UnitOfWork db;
+        private readonly UnitOfWork _db;
         public TransactionsController()
         {
-            db = new UnitOfWork(new ApplicationDbContext());
+            _db = new UnitOfWork(new ApplicationDbContext());
         }
 
         // GET: Transactions
         public ActionResult Index()
         {
-            var transactions = db.Transactions.GetTransactionsWithOrder();
+            var transactions = _db.Transactions.GetTransactionsWithOrder();
             return View(transactions.ToList());
         }
 
@@ -33,7 +28,7 @@ namespace commerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Transaction transaction = db.Transactions.Get(id);
+            Transaction transaction = _db.Transactions.Get(id);
             if (transaction == null)
             {
                 return HttpNotFound();
@@ -129,7 +124,7 @@ namespace commerce.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using commerce;
+using commerce.Areas.Admin.Controllers;
 using commerce.Controllers;
 
 namespace commerce.Tests.Controllers

@@ -1,28 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using commerce.Core.Models;
 using commerce.Repositories;
 
-namespace commerce.Controllers
+namespace commerce.Areas.Admin.Controllers
 {
     public class CouponsController : Controller
     {
-        private readonly UnitOfWork db;
+        private readonly UnitOfWork _db;
         public CouponsController()
         {
-            db = new UnitOfWork(new ApplicationDbContext());
+            _db = new UnitOfWork(new ApplicationDbContext());
         }
 
         // GET: Coupons
         public ActionResult Index()
         {
-            return View(db.Coupons.GetAll(x => x.IsDeleted == false));
+            return View(_db.Coupons.GetAll(x => x.IsDeleted == false));
         }
 
         // GET: Coupons/Details/5
@@ -32,7 +27,7 @@ namespace commerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Coupon coupon = db.Coupons.Get(id);
+            Coupon coupon = _db.Coupons.Get(id);
             if (coupon == null)
             {
                 return HttpNotFound();
@@ -58,8 +53,8 @@ namespace commerce.Controllers
             {
                 coupon.CreationTime = DateTime.Now;
                 coupon.CreatedBy = User.Identity.Name;
-                db.Coupons.Add(coupon);
-                db.Save();
+                _db.Coupons.Add(coupon);
+                _db.Save();
                 return RedirectToAction("Index");
             }
 
@@ -73,7 +68,7 @@ namespace commerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Coupon coupon = db.Coupons.Get(id);
+            Coupon coupon = _db.Coupons.Get(id);
             if (coupon == null)
             {
                 return HttpNotFound();
@@ -91,7 +86,7 @@ namespace commerce.Controllers
         {
             if (ModelState.IsValid)
             {
-                var _coupon = db.Coupons.Get(coupon.CouponId);
+                var _coupon = _db.Coupons.Get(coupon.CouponId);
                 _coupon.CouponId = coupon.CouponId;
                 _coupon.Code = coupon.Code;
                 _coupon.Active = coupon.Active;
@@ -102,7 +97,7 @@ namespace commerce.Controllers
                 _coupon.CreationTime = coupon.CreationTime;
                 _coupon.UpdatedBy = User.Identity.Name;
                 _coupon.UpdatedTime = DateTime.Now;
-                db.Save();
+                _db.Save();
                 return RedirectToAction("Index");
             }
             return View(coupon);
@@ -115,7 +110,7 @@ namespace commerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Coupon coupon = db.Coupons.Get(id);
+            Coupon coupon = _db.Coupons.Get(id);
             if (coupon == null)
             {
                 return HttpNotFound();
@@ -128,9 +123,9 @@ namespace commerce.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Coupon coupon = db.Coupons.Get(id);
+            Coupon coupon = _db.Coupons.Get(id);
             coupon.IsDeleted = true;
-            db.Save();
+            _db.Save();
             return RedirectToAction("Index");
         }
 
@@ -138,7 +133,7 @@ namespace commerce.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

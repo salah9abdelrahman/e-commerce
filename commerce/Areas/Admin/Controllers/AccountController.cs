@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using commerce.Core.Models;
+using commerce.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using commerce.ViewModels;
-using Microsoft.AspNet.Identity.EntityFramework;
-using commerce.Repositories;
 
-namespace commerce.Controllers
+namespace commerce.Areas.Admin.Controllers
 {
     [Authorize]
     public class AccountController : Controller

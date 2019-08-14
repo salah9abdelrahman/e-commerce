@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Net;
 using System.Web.Mvc;
+using commerce.Controllers;
 using commerce.Core.Models;
 using commerce.Repositories;
 
-namespace commerce.Controllers
+namespace commerce.Areas.Admin.Controllers
 {
     public class ProductsController : Controller
     {

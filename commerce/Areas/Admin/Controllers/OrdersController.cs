@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using commerce.Core.Models;
 using commerce.Repositories;
 
-namespace commerce.Controllers
+namespace commerce.Areas.Admin.Controllers
 {
     public class OrdersController : Controller
     {
-        private readonly UnitOfWork db;
+        private readonly UnitOfWork _db;
         public OrdersController()
         {
-            db = new UnitOfWork(new ApplicationDbContext());
+            _db = new UnitOfWork(new ApplicationDbContext());
         }
 
         // GET: Orders
         public ActionResult Index()
         {
-            var orders = db.Orders.GetOrdersWithCouponWithUser();
+            var orders = _db.Orders.GetOrdersWithCouponWithUser();
             return View(orders.ToList());
         }
 
@@ -33,7 +28,7 @@ namespace commerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Get(id);
+            Order order = _db.Orders.Get(id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -138,7 +133,7 @@ namespace commerce.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

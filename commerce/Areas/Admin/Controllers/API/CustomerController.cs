@@ -15,23 +15,23 @@ namespace commerce.Controllers.API
 {
     public class CustomerController : ApiController
     {
-        private readonly UnitOfWork db;
+        private readonly UnitOfWork _db;
         public CustomerController()
         {
-            db = new UnitOfWork(new ApplicationDbContext());
+            _db = new UnitOfWork(new ApplicationDbContext());
         }
 
         [ResponseType(typeof(ApplicationUser))]
         public IHttpActionResult DeleteApplicationUser(string id)
         {
-            ApplicationUser applicationUser = db.ApplicationUsers.Get(id);
+            ApplicationUser applicationUser = _db.ApplicationUsers.Get(id);
             if (applicationUser == null)
             {
                 return NotFound();
             }
 
-            db.ApplicationUsers.Remove(applicationUser);
-            db.Save();
+            _db.ApplicationUsers.Remove(applicationUser);
+            _db.Save();
 
             return Ok(applicationUser);
         }
@@ -40,7 +40,7 @@ namespace commerce.Controllers.API
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

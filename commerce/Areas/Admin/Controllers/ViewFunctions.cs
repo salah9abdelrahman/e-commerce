@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace commerce.Controllers
+namespace commerce.Areas.Admin.Controllers
 {
     public class ViewFunctions
     {
