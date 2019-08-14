@@ -142,9 +142,9 @@ namespace commerce.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            var unitOfWork = new UnitOfWork(new ApplicationDbContext());
-            var roles = unitOfWork.Roles.GetAll(x => x.IsDeleted == false);
-            ViewBag.roleId = new SelectList(roles, "roleId", "Name");
+            //var unitOfWork = new UnitOfWork(new ApplicationDbContext());
+            //var roles = unitOfWork.Roles.GetAll(x => x.IsDeleted == false);
+            //ViewBag.roleId = new SelectList(roles, "roleId", "Name");
 
             return View();
         }
