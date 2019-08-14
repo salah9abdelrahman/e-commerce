@@ -8,7 +8,6 @@ namespace commerce.Areas.Admin.Controllers
 {
     [AllowAnonymous]
     [RouteArea("Admin")]
-
     public class HomeController : Controller
     {
         private readonly UnitOfWork _db;

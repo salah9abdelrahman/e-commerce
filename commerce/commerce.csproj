@@ -199,6 +199,7 @@
     <Compile Include="Areas\Admin\Controllers\RolesController.cs" />
     <Compile Include="Areas\Admin\Controllers\TransactionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserRoles.cs" />
+    <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="Migrations\201908071122257_MakeCouponFkNullable.cs" />
     <Compile Include="Migrations\201908071122257_MakeCouponFkNullable.Designer.cs">
       <DependentUpon>201908071122257_MakeCouponFkNullable.cs</DependentUpon>
@@ -601,6 +602,8 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\User\Views\web.config" />
+    <Content Include="Areas\User\Views\Shared\_Layout.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <None Include="Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -713,6 +716,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\User\Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
