@@ -41,3 +41,11 @@ textarea {
 .hover-bg-black:hover {
     color: black;
 }
+
+.main-color {
+    background-color: #5E2D91;
+}
+
+#user-body {
+    margin-top: 90px;
+}

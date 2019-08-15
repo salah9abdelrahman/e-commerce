@@ -17,6 +17,7 @@ namespace commerce.Areas.Admin.Controllers
         }
 
         // GET: Products
+        [AllowAnonymous]
         public ActionResult Index()
         {
             // with roles

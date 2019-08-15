@@ -11,13 +11,13 @@ namespace commerce.Areas.Admin
                 return "Admin";
             }
         }
-
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "Admin_default",
-                "{controller}/{action}/{id}",
-                new { Controller = "Home", action = "Index", id = UrlParameter.Optional }
+                "Admin/{controller}/{action}/{id}",
+                new { Controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "commerce.Areas.Admin.Controllers" }
             );
         }
     }

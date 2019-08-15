@@ -19,7 +19,9 @@ namespace commerce
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new String[] { "commerce.Areas.Admin.Controllers" }
+                namespaces: new string[] {
+                    "commerce.Controllers"
+                }
             );
         }
     }

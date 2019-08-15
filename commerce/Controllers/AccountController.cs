@@ -78,6 +78,13 @@ namespace commerce.Areas.Admin.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var user = await UserManager.FindAsync(model.Email, model.Password);
+                    var roles = await UserManager.GetRolesAsync(user.Id);
+                    if (roles.Contains(UserRoles.GeneralAdmin))
+                    {
+                        return RedirectToAction("Index", "Home", routeValues: new { area = "Admin" });
+
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -419,7 +426,7 @@ namespace commerce.Areas.Admin.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", routeValues: new { area = "" });
         }
 
         //

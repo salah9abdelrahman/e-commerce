@@ -6,7 +6,6 @@ using commerce.ViewModels;
 
 namespace commerce.Areas.Admin.Controllers
 {
-    [AllowAnonymous]
     [RouteArea("Admin")]
     public class HomeController : Controller
     {
@@ -18,6 +17,7 @@ namespace commerce.Areas.Admin.Controllers
         }
         public ActionResult Index()
         {
+
             var homeView = new HomeViewModel
             {
                 CategoriesCount = _db.Categories.Find(x => x.IsDeleted == false).Count(),
