@@ -190,7 +190,7 @@ namespace commerce.Areas.Admin.Controllers
                     await UserManager.AddToRoleAsync(user.Id, UserRoles.GeneralAdmin);
 
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home", routeValues: new { area = "Admin" });
                 }
                 AddErrors(result);
             }
