@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using commerce.Core.Models;
 using commerce.ViewModels;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
@@ -183,10 +184,10 @@ namespace commerce.Areas.Admin.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     ////register admin manager
-                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    //var roleManger = new RoleManager<IdentityRole>(roleStore);
-                    //await roleManger.CreateAsync(new IdentityRole(UserRoles.GeneralAdmin));
-                    //await UserManager.AddToRoleAsync(user.Id, UserRoles.GeneralAdmin);
+                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManger = new RoleManager<IdentityRole>(roleStore);
+                    await roleManger.CreateAsync(new IdentityRole(UserRoles.GeneralAdmin));
+                    await UserManager.AddToRoleAsync(user.Id, UserRoles.GeneralAdmin);
 
 
                     return RedirectToAction("Index", "Home");
