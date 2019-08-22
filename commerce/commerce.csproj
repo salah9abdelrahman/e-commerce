@@ -200,6 +200,14 @@
     <Compile Include="Areas\Admin\Controllers\TransactionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserRoles.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Migrations\201908071122257_MakeCouponFkNullable.cs" />
+    <Compile Include="Migrations\201908071122257_MakeCouponFkNullable.Designer.cs">
+      <DependentUpon>201908071122257_MakeCouponFkNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908112202123_Role.cs" />
+    <Compile Include="Migrations\201908112202123_Role.Designer.cs">
+      <DependentUpon>201908112202123_Role.cs</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Admin\ViewModels\CustomerViewModel.cs" />
     <Compile Include="Core\IRepositories\IApplicationUsersRepository.cs" />
     <Compile Include="Core\IRepositories\ICategoriesRepository.cs" />
@@ -213,9 +221,57 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201908220813373_initial.cs" />
-    <Compile Include="Migrations\201908220813373_initial.Designer.cs">
-      <DependentUpon>201908220813373_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201907301438052_initialDb.cs" />
+    <Compile Include="Migrations\201907301438052_initialDb.Designer.cs">
+      <DependentUpon>201907301438052_initialDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908011051161_annotations.cs" />
+    <Compile Include="Migrations\201908011051161_annotations.Designer.cs">
+      <DependentUpon>201908011051161_annotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908021207279_seedUsers.cs" />
+    <Compile Include="Migrations\201908021207279_seedUsers.Designer.cs">
+      <DependentUpon>201908021207279_seedUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908032214559_MakeParentCatNull.cs" />
+    <Compile Include="Migrations\201908032214559_MakeParentCatNull.Designer.cs">
+      <DependentUpon>201908032214559_MakeParentCatNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041342219_MakeProductCategoryOneToMany.cs" />
+    <Compile Include="Migrations\201908041342219_MakeProductCategoryOneToMany.Designer.cs">
+      <DependentUpon>201908041342219_MakeProductCategoryOneToMany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908051115006_FixingRoleTableFK.cs" />
+    <Compile Include="Migrations\201908051115006_FixingRoleTableFK.Designer.cs">
+      <DependentUpon>201908051115006_FixingRoleTableFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908051537407_ApplicationUser.cs" />
+    <Compile Include="Migrations\201908051537407_ApplicationUser.Designer.cs">
+      <DependentUpon>201908051537407_ApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908051809400_AppicationUserInfo.cs" />
+    <Compile Include="Migrations\201908051809400_AppicationUserInfo.Designer.cs">
+      <DependentUpon>201908051809400_AppicationUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908051949147_FixingApplicationUser.cs" />
+    <Compile Include="Migrations\201908051949147_FixingApplicationUser.Designer.cs">
+      <DependentUpon>201908051949147_FixingApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908061541186_ApplicationIdString.cs" />
+    <Compile Include="Migrations\201908061541186_ApplicationIdString.Designer.cs">
+      <DependentUpon>201908061541186_ApplicationIdString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908061602082_RemoveUserRoleTable.cs" />
+    <Compile Include="Migrations\201908061602082_RemoveUserRoleTable.Designer.cs">
+      <DependentUpon>201908061602082_RemoveUserRoleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908061609527_ApplicationUserTimes.cs" />
+    <Compile Include="Migrations\201908061609527_ApplicationUserTimes.Designer.cs">
+      <DependentUpon>201908061609527_ApplicationUserTimes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908062017167_MakeIsDeletedNotull.cs" />
+    <Compile Include="Migrations\201908062017167_MakeIsDeletedNotull.Designer.cs">
+      <DependentUpon>201908062017167_MakeIsDeletedNotull.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Core\Models\ApplicationDbContext.cs" />
@@ -668,15 +724,57 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907301438052_initialDb.resx">
+      <DependentUpon>201907301438052_initialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908011051161_annotations.resx">
+      <DependentUpon>201908011051161_annotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908021207279_seedUsers.resx">
+      <DependentUpon>201908021207279_seedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908032214559_MakeParentCatNull.resx">
+      <DependentUpon>201908032214559_MakeParentCatNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041342219_MakeProductCategoryOneToMany.resx">
+      <DependentUpon>201908041342219_MakeProductCategoryOneToMany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908051115006_FixingRoleTableFK.resx">
+      <DependentUpon>201908051115006_FixingRoleTableFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908051537407_ApplicationUser.resx">
+      <DependentUpon>201908051537407_ApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908051809400_AppicationUserInfo.resx">
+      <DependentUpon>201908051809400_AppicationUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908051949147_FixingApplicationUser.resx">
+      <DependentUpon>201908051949147_FixingApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908061541186_ApplicationIdString.resx">
+      <DependentUpon>201908061541186_ApplicationIdString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908061602082_RemoveUserRoleTable.resx">
+      <DependentUpon>201908061602082_RemoveUserRoleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908061609527_ApplicationUserTimes.resx">
+      <DependentUpon>201908061609527_ApplicationUserTimes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908062017167_MakeIsDeletedNotull.resx">
+      <DependentUpon>201908062017167_MakeIsDeletedNotull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908071122257_MakeCouponFkNullable.resx">
+      <DependentUpon>201908071122257_MakeCouponFkNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908112202123_Role.resx">
+      <DependentUpon>201908112202123_Role.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908220813373_initial.resx">
-      <DependentUpon>201908220813373_initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

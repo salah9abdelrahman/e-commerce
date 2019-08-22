@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using commerce.Core;
 using commerce.Core.Models;
 using commerce.Repositories;
 using commerce.ViewModels;
@@ -10,11 +9,11 @@ namespace commerce.Areas.Admin.Controllers
     [RouteArea("Admin")]
     public class HomeController : Controller
     {
-        private readonly IUnitOfWork _db;
+        private readonly UnitOfWork _db;
 
-        public HomeController(IUnitOfWork unitOfWork)
+        public HomeController()
         {
-            _db = unitOfWork;
+            _db = new UnitOfWork(new ApplicationDbContext());
         }
         public ActionResult Index()
         {
