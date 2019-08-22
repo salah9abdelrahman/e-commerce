@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using commerce.Core;
 using commerce.Core.Models;
 using commerce.Repositories;
 
@@ -9,11 +8,10 @@ namespace commerce.Areas.Admin.Controllers
 {
     public class OrdersController : Controller
     {
-        private readonly IUnitOfWork _db;
-
-        public OrdersController(IUnitOfWork unitOfWork)
+        private readonly UnitOfWork _db;
+        public OrdersController()
         {
-            _db = unitOfWork;
+            _db = new UnitOfWork(new ApplicationDbContext());
         }
 
         // GET: Orders

@@ -2,7 +2,6 @@
 using System.Net;
 using System.Web.Mvc;
 using commerce.Controllers;
-using commerce.Core;
 using commerce.Core.Models;
 using commerce.Repositories;
 
@@ -10,11 +9,11 @@ namespace commerce.Areas.Admin.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly IUnitOfWork _db;
+        private readonly UnitOfWork _db;
 
-        public ProductsController(IUnitOfWork unitOfWork)
+        public ProductsController()
         {
-            _db = unitOfWork;
+            _db = new UnitOfWork(new ApplicationDbContext());
         }
 
         // GET: Products
