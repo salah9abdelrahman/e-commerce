@@ -1,10 +1,4 @@
-﻿@if (User.Identity.IsAuthenticated && User.IsInRole(UserRoles.GeneralAdmin))
-{
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-
-}
-else
-{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
