@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using commerce.Core;
 using commerce.Core.Models;
 using commerce.Repositories;
 
@@ -15,12 +16,12 @@ namespace commerce.Controllers.API
 {
     public class CustomerController : ApiController
     {
-        private readonly UnitOfWork _db;
-        public CustomerController()
-        {
-            _db = new UnitOfWork(new ApplicationDbContext());
-        }
+        private readonly IUnitOfWork _db;
 
+        public CustomerController(IUnitOfWork unitOfWork)
+        {
+            _db = unitOfWork;
+        }
         [ResponseType(typeof(ApplicationUser))]
         public IHttpActionResult DeleteApplicationUser(string id)
         {

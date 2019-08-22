@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Web.Mvc;
+using commerce.Core;
 using commerce.Core.Models;
 using commerce.Repositories;
 
@@ -8,10 +9,11 @@ namespace commerce.Areas.Admin.Controllers
 {
     public class CouponsController : Controller
     {
-        private readonly UnitOfWork _db;
-        public CouponsController()
+        private readonly IUnitOfWork _db;
+
+        public CouponsController(IUnitOfWork unitOfWork)
         {
-            _db = new UnitOfWork(new ApplicationDbContext());
+            _db = unitOfWork;
         }
 
         // GET: Coupons

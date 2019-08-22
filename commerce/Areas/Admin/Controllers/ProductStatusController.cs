@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Web.Mvc;
+using commerce.Core;
 using commerce.Core.Models;
 using commerce.Repositories;
 
@@ -8,13 +9,12 @@ namespace commerce.Areas.Admin.Controllers
 {
     public class ProductStatusController : Controller
     {
-        private readonly UnitOfWork _db;
+        private readonly IUnitOfWork _db;
 
-        public ProductStatusController()
+        public ProductStatusController(IUnitOfWork unitOfWork)
         {
-            this._db = new UnitOfWork(new ApplicationDbContext());
+            _db = unitOfWork;
         }
-
         // GET: ProductStatus
         public ActionResult Index()
         {

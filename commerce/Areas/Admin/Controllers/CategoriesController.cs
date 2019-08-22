@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
+using commerce.Core;
 using commerce.Core.Models;
 using commerce.Repositories;
 using commerce.ViewModels;
@@ -10,11 +11,11 @@ namespace commerce.Areas.Admin.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly UnitOfWork _db;
+        private readonly IUnitOfWork _db;
 
-        public CategoriesController()
+        public CategoriesController(IUnitOfWork unitOfWork)
         {
-            this._db = new UnitOfWork(new ApplicationDbContext());
+            _db = unitOfWork;
         }
 
         // GET: Categories

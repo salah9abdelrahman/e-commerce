@@ -7,13 +7,13 @@ namespace commerce.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class MakeCouponFkNullable : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(MakeCouponFkNullable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201908071122257_MakeCouponFkNullable"; }
+            get { return "201908220813373_initial"; }
         }
         
         string IMigrationMetadata.Source

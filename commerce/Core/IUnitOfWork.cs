@@ -8,8 +8,7 @@ namespace commerce.Core
 {
     public interface IUnitOfWork : IDisposable
     {
-        //here we put the specific repositories interfaces to mock unit test
-        // and complete (or save) function
+
         IProductRepository Products { get; }
         IProductStatusesRepository ProductStatuses { get; }
         IRolesRepository Roles { get; }

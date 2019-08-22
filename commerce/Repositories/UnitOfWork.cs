@@ -12,30 +12,116 @@ namespace commerce.Repositories
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _dbContext;
-        public UnitOfWork(ApplicationDbContext context)
+
+        public IProductRepository Products
         {
-            _dbContext = context;
-            Products = new ProductRepository(context);
-            ProductStatuses = new ProductStatusesRepository(context);
-            Roles = new RoleRepository(context);
-            Categories = new CategoriesRepository(context);
-            Coupons = new CouponRepository(context);
-            Transactions = new TransactionRepository(context);
-            Orders = new OrderRepository(context);
-            OrderProducts = new OrderProductRepository(context);
-            ApplicationUsers = new ApplicationUserRepository(context);
+            get
+            {
+                if (_Products == null)
+                {
+                    _Products = new ProductRepository(_dbContext);
+                }
+                return _Products;
+            }
+        }
+        public IProductStatusesRepository ProductStatuses
+        {
+            get
+            {
+                if (_ProductStatuses == null)
+                {
+                    _ProductStatuses = new ProductStatusesRepository(_dbContext);
+                }
+                return _ProductStatuses;
+            }
+        }
+        public IRolesRepository Roles
+        {
+            get
+            {
+                if (_Roles == null)
+                {
+                    _Roles = new RoleRepository(_dbContext);
+                }
+                return _Roles;
+            }
+        }
+        public ICategoriesRepository Categories
+        {
+            get
+            {
+                if (_Categories == null)
+                {
+                    _Categories = new CategoriesRepository(_dbContext);
+                }
+                return _Categories;
+            }
+        }
+        public ICouponRepository Coupons
+        {
+            get
+            {
+                if (_Coupons == null)
+                {
+                    _Coupons = new CouponRepository(_dbContext);
+                }
+                return _Coupons;
+            }
+        }
+        public ITransactionRepository Transactions
+        {
+            get
+            {
+                if (_Transactions == null)
+                {
+                    _Transactions = new TransactionRepository(_dbContext);
+                }
+                return _Transactions;
+            }
+        }
+        public IOrderRepository Orders
+        {
+            get
+            {
+                if (_Orders == null)
+                {
+                    _Orders = new OrderRepository(_dbContext);
+                }
+                return _Orders;
+            }
+        }
+        public IOrderProductRepository OrderProducts
+        {
+            get
+            {
+                if (_OrderProducts == null)
+                {
+                    _OrderProducts = new OrderProductRepository(_dbContext);
+                }
+                return _OrderProducts;
+            }
+        }
+        public IApplicationUsersRepository ApplicationUsers
+        {
+            get
+            {
+                if (_ApplicationUsers == null)
+                {
+                    _ApplicationUsers = new ApplicationUserRepository(_dbContext);
+                }
+                return _ApplicationUsers;
+            }
         }
 
-        public IProductRepository Products { get; private set; }
-        public IProductStatusesRepository ProductStatuses { get; private set; }
-        public IRolesRepository Roles { get; private set; }
-        public ICategoriesRepository Categories { get; private set; }
-        public ICouponRepository Coupons { get; private set; }
-        public ITransactionRepository Transactions { get; private set; }
-        public IOrderRepository Orders { get; private set; }
-        public IOrderProductRepository OrderProducts { get; private set; }
-
-        public IApplicationUsersRepository ApplicationUsers { get; private set; }
+        private IProductRepository _Products;
+        private IProductStatusesRepository _ProductStatuses;
+        private IRolesRepository _Roles;
+        private ICategoriesRepository _Categories;
+        private ICouponRepository _Coupons;
+        private ITransactionRepository _Transactions;
+        private IOrderRepository _Orders;
+        private IOrderProductRepository _OrderProducts;
+        private IApplicationUsersRepository _ApplicationUsers;
 
         public int Save()
         {

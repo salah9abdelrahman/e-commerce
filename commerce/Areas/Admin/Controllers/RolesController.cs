@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Web.Mvc;
+using commerce.Core;
 using commerce.Core.Models;
 using commerce.Repositories;
 
@@ -8,11 +9,11 @@ namespace commerce.Areas.Admin.Controllers
 {
     public class RolesController : Controller
     {
-        private readonly UnitOfWork _db;
+        private readonly IUnitOfWork _db;
 
-        public RolesController()
+        public RolesController(IUnitOfWork unitOfWork)
         {
-            _db = new UnitOfWork(new ApplicationDbContext());
+            _db = unitOfWork;
         }
 
 
